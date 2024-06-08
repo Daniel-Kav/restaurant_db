@@ -1,0 +1,131 @@
+
+GET http://localhost:8000/restaurants/2
+
+
+###
+
+GET http://localhost:8000/search/categories?searchTerm=a
+
+
+###
+
+GET http://localhost:8000/statusCatalog/
+
+###
+
+GET /api/users/search?searchTerm=John
+
+###
+
+POST http://localhost:8000/restaurants
+Content-Type: application/json
+
+{
+  "name": "The Zod Res",
+  "streetAddress": "123 Main St",
+  "zipCode": "12345",
+  "cityId": 1
+}
+
+###
+
+POST http://localhost:8000/restaurantOwner
+Content-Type: application/json
+
+{
+  "restaurant_id": 1,
+  "owner_id": 1
+}
+
+
+
+
+###
+
+PUT http://localhost:8000/states/4
+Content-Type: application/json
+
+{
+    "name": "Uganda",
+    "code":"UG"
+}
+
+###
+
+PUT http://localhost:8000/users/1
+Content-Type: application/json
+
+{
+    "name": "newUser"
+}
+
+
+###
+
+PUT http://localhost:8000/comments/
+Content-Type: application/json
+
+{
+    "name": "Kavatha restaurant"
+}
+
+###
+
+PUT http://localhost:8000/states/2
+Content-Type: application/json
+
+{
+    "name": "kenya",
+    "code": "KE"
+}
+###
+DELETE http://localhost:8000/address/1
+
+
+
+###
+DELETE http://localhost:8000/restaurants/3
+###
+
+GET http://localhost:8000/states/4
+###
+
+GET http://localhost:8000/status-catalog
+
+###
+
+GET http://localhost:8000/users/order/3
+
+
+###
+
+GET http://localhost:8000/orders/user/3
+###
+
+GET http://localhost:8000/cities/1/restaurants
+
+###
+
+GET http://localhost:8000/states/1/cities
+
+
+###
+// Service to fetch the status of a particular order by order ID
+GET http://localhost:8000/orderStatus/2/status
+###
+
+GET http://localhost:8000/states/4/cities/3/restaurants
+
+###
+// Service to fetch menu items by restaurant ID
+
+GET http://localhost:8000/restaurants/3/menu_items
+
+###
+// Service to fetch menu items by category ID
+GET http://localhost:8000/categories/6/menu_items
+
+
+
+
+
