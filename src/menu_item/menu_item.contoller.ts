@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { createmenuItemService, deletemenuItemService, getMenuItemsByCategoryService, getMenuItemsByRestaurantService, getmenuItemService, menuItemService, searchMenuItemsService, updatemenuItemService } from "./menu_item.service";
+import { createmenuItemService, deletemenuItemService, getMenuItemsByCategoryService, getMenuItemsByRestaurantService, getRestaurantMenuByCategoryNameService, getmenuItemService, menuItemService, updatemenuItemService } from "./menu_item.service";
 import { menuItem } from "../drizzle/schema";
 import db from "../drizzle/db";
 import { eq } from "drizzle-orm";
@@ -125,25 +125,31 @@ export const getMenuItemsByCategoryController = async (c: Context) => {
   }
 };
 
-// Controller to search for menu items by category and optionally a search term
-export const searchMenuItemsController = async (c: Context) => {
+// Controller to get menu items by category name for a specific restaurant
+export const getRestaurantMenuByCategoryNameController = async (c: Context) => {
   try {
-    const searchTerm = c.req.query('searchTerm');
+    const restaurantId = parseInt(c.req.param('restaurantId'), 10);
     const categoryName = c.req.query('categoryName');
+
+    if (isNaN(restaurantId)) {
+      return c.json({ error: 'Invalid restaurant ID' }, 400);
+    }
 
     if (!categoryName) {
       return c.json({ error: 'Missing categoryName' }, 400);
     }
 
-    const menuItems = await searchMenuItemsService(categoryName, searchTerm);
+    const menuItems = await getRestaurantMenuByCategoryNameService(restaurantId, categoryName);
 
-    if (menuItems.length === 0) {
-      return c.json({ message: 'No menu items found' }, 404);
+    if (!menuItems) {
+      return c.json({ message: 'No menu items found for the specified category in this restaurant' }, 404);
     }
 
     return c.json({ menuItems });
   } catch (error) {
-    console.error('Error searching menu items:', error);
+    console.error('Error getting menu items:', error);
     return c.json({ error: 'Internal server error' }, 500);
   }
 };
+
+

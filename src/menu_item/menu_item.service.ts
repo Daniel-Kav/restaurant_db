@@ -1,7 +1,7 @@
 
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
-import { TIMenuItem, TSMenuItem, menuItem } from "../drizzle/schema";
+import { TIMenuItem, TSMenuItem, category, menuItem, restaurant } from "../drizzle/schema";
 
 export const menuItemService = async (limit?: number): Promise<TSMenuItem[] | null>  => {
     if (limit) {
@@ -55,5 +55,26 @@ export const getMenuItemsByCategoryService = async (categoryId: number) => {
   return menuItems;
 };
 
+// Service to fetch menu items by category name for a specific restaurant
+export const getRestaurantMenuByCategoryNameService = async (restaurantId: number, categoryName: string) => {
+  const menuItems = await db.query.restaurant.findFirst({
+    where: eq(restaurant.id, restaurantId),
+    with: {
+      menuItems: {
+        where: eq(
+          menuItem.categoryId,
+          db
+            .select({ id: category.id })
+            .from(category)
+            .where(eq(category.name, categoryName))
+        ),
+        with: {
+          category: true,
+        },
+      },
+    },
+  });
 
+  return menuItems;
+};
 

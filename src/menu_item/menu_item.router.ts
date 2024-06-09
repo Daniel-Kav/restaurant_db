@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { menuItemSchema } from "../validators";
-import { createmenuItem, deletemenuItem, getMenuItemsByRestaurantController, getmenuItem, listmenuItem, updatemenuItem , getMenuItemsByCategoryController} from "./menu_item.contoller";
+import { createmenuItem, deletemenuItem, getMenuItemsByRestaurantController, getmenuItem, listmenuItem, updatemenuItem , getMenuItemsByCategoryController, getRestaurantMenuByCategoryNameController} from "./menu_item.contoller";
 export const menuItemRouter = new Hono();
 
 //get all address      
@@ -20,3 +20,5 @@ menuItemRouter.put("/menuItem/:id", updatemenuItem)
 menuItemRouter.delete("/menuItem/:id", deletemenuItem)
 menuItemRouter.get('/restaurants/:id/menu_items', getMenuItemsByRestaurantController);
 menuItemRouter.get('/categories/:id/menu_items', getMenuItemsByCategoryController);
+
+menuItemRouter.get('/restaurant/:restaurantId/category', getRestaurantMenuByCategoryNameController);
