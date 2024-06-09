@@ -40,7 +40,7 @@ POST http://localhost:8000/restaurantOwner
 Content-Type: application/json
 
 {
-  "restaurantId": 1,
+  "restaurantId": 4,
   "ownerId": 1
 }
 
@@ -131,7 +131,7 @@ GET http://localhost:8000/categories/6/menu_items
 
 ###
 // Service to fetch the owner of a restaurant by restaurant ID
-GET http://localhost:8000/restaurants/21/owner
+GET http://localhost:8000/api/restaurants/21/owner
 
 ###
 // fetch all restaurants owned by a particular user

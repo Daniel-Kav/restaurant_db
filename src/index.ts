@@ -32,7 +32,7 @@ const app =  new Hono()
 // rate limiter
 const limiter = rateLimiter({
   windowMs: 1 * 60 * 1000, // 1 minute
-  limit: 10, // Limit each IP to 100 requests per `window`
+  limit: 100, // Limit each IP to 100 requests per `window`
   standardHeaders: "draft-6", // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
   keyGenerator: (c) => "<unique_key>", // Method to generate custom identifiers for clients.
   // store: ... , // Redis, MemoryStore, etc. See below.
