@@ -7,7 +7,6 @@ import { trimTrailingSlash } from 'hono/trailing-slash'
 import { HTTPException } from 'hono/http-exception'
 import { rateLimiter } from "hono-rate-limiter";
 import { jwt } from 'hono/jwt';
-import { drizzle } from 'drizzle-orm/node-postgres'
 
 import { userRouter } from './users/user.router'
 import { restaurantRouter } from './restaurant/restaurant.router'
@@ -28,7 +27,7 @@ import { restaurantOwnerRouter } from './restaurant_owner/restaurant_owner.route
 
 
 
-const app =  new Hono()
+const app =  new Hono().basePath('/api')
 // rate limiter
 const limiter = rateLimiter({
   windowMs: 1 * 60 * 1000, // 1 minute
@@ -75,6 +74,7 @@ app.route("/", menuItemRouter) //menuItemRouter
 app.route("/", orderMenuItemRouter) //orderMenuItemRouter
 app.route("/", orderStatusRouter) //orderStatusRouter
 app.route("/", restaurantOwnerRouter) //restaurantOwnerRouter
+
 
 
 

@@ -23,11 +23,11 @@ const menu_item_router_1 = require("./menu_item/menu_item.router");
 const order_menu_item_router_1 = require("./order_menu_item/order_menu_item.router");
 const order_status_router_1 = require("./order_status/order_status.router");
 const restaurant_owner_router_1 = require("./restaurant_owner/restaurant_owner.router");
-const app = new hono_1.Hono();
+const app = new hono_1.Hono().basePath('/api');
 // rate limiter
 const limiter = (0, hono_rate_limiter_1.rateLimiter)({
     windowMs: 1 * 60 * 1000, // 1 minute
-    limit: 10, // Limit each IP to 100 requests per `window`
+    limit: 100, // Limit each IP to 100 requests per `window`
     standardHeaders: "draft-6", // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
     keyGenerator: (c) => "<unique_key>", // Method to generate custom identifiers for clients.
     // store: ... , // Redis, MemoryStore, etc. See below.
@@ -61,6 +61,7 @@ app.route("/", menu_item_router_1.menuItemRouter); //menuItemRouter
 app.route("/", order_menu_item_router_1.orderMenuItemRouter); //orderMenuItemRouter
 app.route("/", order_status_router_1.orderStatusRouter); //orderStatusRouter
 app.route("/", restaurant_owner_router_1.restaurantOwnerRouter); //restaurantOwnerRouter
+//rest
 (0, node_server_1.serve)({
     fetch: app.fetch,
     port: Number(process.env.PORT)

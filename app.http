@@ -91,7 +91,7 @@ DELETE http://localhost:8000/address/1
 DELETE http://localhost:8000/restaurants/3
 ###
 
-GET http://localhost:8000/states/4
+GET http://localhost:8000/api/states/4
 ###
 
 GET http://localhost:8000/status-catalog
