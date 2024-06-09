@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { createmenuItemService, deletemenuItemService, getMenuItemsByCategoryService, getMenuItemsByRestaurantService, getmenuItemService, menuItemService, updatemenuItemService } from "./menu_item.service";
+import { createmenuItemService, deletemenuItemService, getMenuItemsByCategoryService, getMenuItemsByRestaurantService, getmenuItemService, menuItemService, searchMenuItemsService, updatemenuItemService } from "./menu_item.service";
 import { menuItem } from "../drizzle/schema";
 import db from "../drizzle/db";
 import { eq } from "drizzle-orm";
@@ -121,6 +121,29 @@ export const getMenuItemsByCategoryController = async (c: Context) => {
     return c.json({ menuItems });
   } catch (error) {
     console.error('Error fetching menu items for category:', error);
+    return c.json({ error: 'Internal server error' }, 500);
+  }
+};
+
+// Controller to search for menu items by category and optionally a search term
+export const searchMenuItemsController = async (c: Context) => {
+  try {
+    const searchTerm = c.req.query('searchTerm');
+    const categoryName = c.req.query('categoryName');
+
+    if (!categoryName) {
+      return c.json({ error: 'Missing categoryName' }, 400);
+    }
+
+    const menuItems = await searchMenuItemsService(categoryName, searchTerm);
+
+    if (menuItems.length === 0) {
+      return c.json({ message: 'No menu items found' }, 404);
+    }
+
+    return c.json({ menuItems });
+  } catch (error) {
+    console.error('Error searching menu items:', error);
     return c.json({ error: 'Internal server error' }, 500);
   }
 };

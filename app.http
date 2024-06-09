@@ -4,9 +4,11 @@ GET http://localhost:8000/restaurants/2
 
 ###
 
-GET http://localhost:8000/search/categories?searchTerm=a
+GET http://localhost:8000/search/categories?searchTerm=salad
 
+###
 
+GET http://localhost:8000/menuItem/2
 ###
 
 GET http://localhost:8000/statusCatalog/
