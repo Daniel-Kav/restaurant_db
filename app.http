@@ -20,7 +20,7 @@ GET http://localhost:8000/statusCatalog/
 
 ###
 
-GET /api/users/search?searchTerm=John
+GET http://localhost:8000/search/users?searchTerm= kav
 
 ###
 
@@ -40,12 +40,9 @@ POST http://localhost:8000/restaurantOwner
 Content-Type: application/json
 
 {
-  "restaurant_id": 1,
-  "owner_id": 1
+  "restaurantId": 1,
+  "ownerId": 1
 }
-
-
-
 
 ###
 
