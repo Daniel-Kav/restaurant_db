@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { createrestaurantOwnerService, deleterestaurantOwnerService, getrestaurantOwnerService, restaurantOwnerService, updaterestaurantOwnerService } from "./restaurant_owner.service";
+import { createrestaurantOwnerService, deleterestaurantOwnerService, getRestaurantOwnerService, getrestaurantOwnerService, restaurantOwnerService, updaterestaurantOwnerService } from "./restaurant_owner.service";
 
 export const listrestaurantOwner = async (c: Context) => {
     try {
@@ -77,3 +77,25 @@ export const deleterestaurantOwner = async (c: Context) => {
         return c.json({ error: error?.message }, 400)
     }
 }
+
+// Controller to get the owner of a restaurant by restaurant ID
+export const getRestaurantOwnerController = async (c: Context) => {
+  try {
+    const restaurantId = parseInt(c.req.param('id'), 10);
+
+    if (isNaN(restaurantId)) {
+      return c.json({ error: 'Invalid restaurant ID' }, 400);
+    }
+
+    const ownerData = await getRestaurantOwnerService(restaurantId);
+
+    if (!ownerData.length) {
+      return c.json({ error: 'Owner not found for this restaurant' }, 404);
+    }
+
+    return c.json({ owner: ownerData[0] });
+  } catch (error) {
+    console.error('Error fetching restaurant owner:', error);
+    return c.json({ error: 'Internal server error' }, 500);
+  }
+};

@@ -102,7 +102,7 @@ GET http://localhost:8000/users/order/3
 GET http://localhost:8000/orders/user/3
 ###
 
-GET http://localhost:8000/cities/1/restaurants
+GET http://localhost:8000/cities/4/restaurants
 
 ###
 
@@ -124,6 +124,12 @@ GET http://localhost:8000/restaurants/3/menu_items
 ###
 // Service to fetch menu items by category ID
 GET http://localhost:8000/categories/6/menu_items
+
+###
+// Service to fetch the owner of a restaurant by restaurant ID
+GET http://localhost:8000/restaurants/21/owner
+
+
 
 
 

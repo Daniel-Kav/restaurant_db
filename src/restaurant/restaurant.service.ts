@@ -1,7 +1,7 @@
 import db from '../drizzle/db';
 import { eq } from "drizzle-orm";
 // import { TIProfile, TSProfile } from '../drizzle/schema';
-import { TIRestaurant, TSRestaurant, restaurant, restaurantRelations } from '../drizzle/schema';
+import { TIRestaurant, TSRestaurant, restaurant, restaurantOwner, restaurantRelations, user } from '../drizzle/schema';
 
 export const restaurantService = async ()  => {
     return await db.select().from(restaurant);
@@ -37,5 +37,7 @@ export const deleteRestaurantService = async (id: number) => {
     await db.delete(restaurant).where(eq(restaurant.id, id))
     return "restaurant deleted successfully";
 }
+
+
 
 

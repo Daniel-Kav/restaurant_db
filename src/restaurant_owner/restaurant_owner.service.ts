@@ -2,7 +2,7 @@
 
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
-import { TIRestaurantOwner, TSRestaurantOwner, restaurantOwner } from "../drizzle/schema";
+import { TIRestaurantOwner, TSRestaurantOwner, restaurantOwner, user } from "../drizzle/schema";
 
 export const restaurantOwnerService = async (limit?: number): Promise<TSRestaurantOwner[] | null> => {
     if (limit) {
@@ -33,3 +33,15 @@ export const deleterestaurantOwnerService = async (id: number) => {
     await db.delete(restaurantOwner).where(eq(restaurantOwner.id, id))
     return "restaurantOwner deleted successfully";
 }
+
+// Service to fetch the owner of a restaurant by restaurant ID
+export const getRestaurantOwnerService = async (restaurantId: number) => {
+  const ownerData = await db
+    .select()
+    .from(restaurantOwner)
+    .innerJoin(user, eq(restaurantOwner.ownerId, user.id))
+    .where(eq(restaurantOwner.restaurantId, restaurantId))
+    .execute();
+
+  return ownerData;
+};
