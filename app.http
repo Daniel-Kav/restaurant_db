@@ -118,7 +118,7 @@ GET http://localhost:8000/states/1/cities
 
 ###
 // Service to fetch the status of a particular order by order ID
-GET http://localhost:8000/orderStatus/2/status
+GET http://localhost:8000/orderStatus/3/status
 ###
 
 GET http://localhost:8000/states/4/cities/3/restaurants
