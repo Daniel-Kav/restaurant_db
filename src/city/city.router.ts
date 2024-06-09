@@ -1,7 +1,7 @@
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { citySchema } from "../validators";
-import { createCity, deleteCity, getCity, getRestaurantsByCityController, listCity, updateCity } from "../city/city.controller";
+import { createCity, deleteCity, getCity, getRestaurantsByCityController, listCity, searchCitiesController, updateCity } from "../city/city.controller";
 export const cityRouter = new Hono();
 
 //get all address      
@@ -18,3 +18,4 @@ cityRouter.post("/cities",  zValidator('json', citySchema, (result, c) => {
 
 cityRouter.delete("/cities/:id", deleteCity)
 cityRouter.get('/cities/:id/restaurants', getRestaurantsByCityController);
+cityRouter.get('/search/cities', searchCitiesController);

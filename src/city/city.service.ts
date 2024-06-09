@@ -1,6 +1,6 @@
 
 
-import { eq } from "drizzle-orm";
+import { eq, ilike } from "drizzle-orm";
 import db from "../drizzle/db";
 import {TICity, TSCity, city, restaurant } from "../drizzle/schema";
 
@@ -33,6 +33,15 @@ export const deletecityService = async (id: number) => {
     await db.delete(city).where(eq(city.id, id))
     return "city deleted successfully";
 }
+
+// Service to search for a city by name using a search term
+export const searchCitiesService = async (searchTerm: string) => {
+  const cities = await db.select()
+    .from(city)
+    .where(ilike(city.name, `%${searchTerm}%`));
+  
+  return cities;
+};
 
 // Service to fetch restaurants by city ID
 export const getRestaurantsByCityService = async (cityId: number) => {

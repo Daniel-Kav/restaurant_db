@@ -69,6 +69,7 @@ export const getRestaurantMenuByCategoryNameService = async (restaurantId: numbe
             .where(eq(category.name, categoryName))
         ),
         with: {
+          
           category: true,
         },
       },

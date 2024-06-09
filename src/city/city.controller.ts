@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { cityService, createcityService, deletecityService, getRestaurantsByCityService, getcityService, updatecityService } from "./city.service";
+import { cityService, createcityService, deletecityService, getRestaurantsByCityService, getcityService, searchCitiesService, updatecityService } from "./city.service";
 
 export const listCity = async (c: Context) => {
     try {
@@ -77,6 +77,29 @@ export const deleteCity = async (c: Context) => {
         return c.json({ error: error?.message }, 400)
     }
 }
+
+// Controller to search for a city using a search term
+export const searchCitiesController = async (c: Context) => {
+  try {
+    const searchTerm = c.req.query('searchTerm');
+
+    if (!searchTerm) {
+      return c.json({ error: 'Missing searchTerm' }, 400);
+    }
+
+    const cities = await searchCitiesService(searchTerm);
+
+    if (cities.length === 0) {
+      return c.json({ message: 'No cities found' }, 404);
+    }
+
+    return c.json({ cities });
+  } catch (error) {
+    console.error('Error searching cities:', error);
+    return c.json({ error: 'Internal server error' }, 500);
+  }
+};
+
 
 export const getRestaurantsByCityController = async (c: Context) => {
   try {

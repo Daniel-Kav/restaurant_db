@@ -8,7 +8,12 @@ GET http://localhost:8000/search/categories?searchTerm=salad
 
 ###
 
-GET http://localhost:8000/menuItem/2
+GET http://localhost:8000/search/cities?searchTerm=a
+
+###
+
+GET http://localhost:8000/restaurant/4/category?categoryName=2
+
 ###
 
 GET http://localhost:8000/statusCatalog/
