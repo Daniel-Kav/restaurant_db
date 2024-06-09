@@ -129,6 +129,10 @@ GET http://localhost:8000/categories/6/menu_items
 // Service to fetch the owner of a restaurant by restaurant ID
 GET http://localhost:8000/restaurants/21/owner
 
+###
+// fetch all restaurants owned by a particular user
+GET http://localhost:8000/restaurantOwner/1/restaurants
+
 
 
 

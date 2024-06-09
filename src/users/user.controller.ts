@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { usersService, getUserService, createUserService, updateUserService, deleteUserService, searchUsersService, getUsersByOrderService, getAddressesByUserService } from "./user.service";
+import { usersService, getUserService, createUserService, updateUserService, deleteUserService, searchUsersService, getUsersByOrderService, getAddressesByUserService, getRestaurantsByOwnerService } from "./user.service";
 
 export const listUsers = async (c: Context) => {
     try {
@@ -133,6 +133,28 @@ export const getAddressesByUserController = async (c: Context) => {
     return c.json({ addresses });
   } catch (error) {
     console.error('Error fetching addresses for user:', error);
+    return c.json({ error: 'Internal server error' }, 500);
+  }
+};
+
+// Controller to get all restaurants owned by a particular user
+export const getRestaurantsByOwnerController = async (c: Context) => {
+  try {
+    const userId = parseInt(c.req.param('id'), 10);
+
+    if (isNaN(userId)) {
+      return c.json({ error: 'Invalid user ID' }, 400);
+    }
+
+    const restaurants = await getRestaurantsByOwnerService(userId);
+
+    if (!restaurants.length) {
+      return c.json({ error: 'No restaurants found for this user' }, 404);
+    }
+
+    return c.json({ restaurants });
+  } catch (error) {
+    console.error('Error fetching restaurants:', error);
     return c.json({ error: 'Internal server error' }, 500);
   }
 };

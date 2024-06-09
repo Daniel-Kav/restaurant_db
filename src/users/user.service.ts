@@ -1,7 +1,7 @@
 import { eq , or, ilike} from "drizzle-orm";
 import db from "../drizzle/db";
 // import { Client } from "pg";
-import { TIUser, TSUser, address, order, user,userRelations } from "../drizzle/schema";
+import { TIUser, TSUser, address, order, restaurant, restaurantOwner, user,userRelations } from "../drizzle/schema";
 
 // export const client = new Client({
 //     connectionString: process.env.Database_URL as string,   //get the database url from the environment
@@ -82,4 +82,16 @@ export const getAddressesByUserService = async (userId: number) => {
     .execute();
 
   return addresses;
+};
+
+// Service to fetch all restaurants owned by a particular user
+export const getRestaurantsByOwnerService = async (userId: number) => {
+  const restaurants = await db
+    .select()
+    .from(restaurant)
+    .innerJoin(restaurantOwner, eq(restaurant.id, restaurantOwner.restaurantId))
+    .where(eq(restaurantOwner.ownerId, userId))
+    .execute();
+
+  return restaurants;
 };

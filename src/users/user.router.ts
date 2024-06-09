@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { listUsers, getUser, createUser, updateUser, deleteUser, searchUsers, getUsersByOrderController, getAddressesByUserController } from "./user.controller"
+import { listUsers, getUser, createUser, updateUser, deleteUser, searchUsers, getUsersByOrderController, getAddressesByUserController, getRestaurantsByOwnerController } from "./user.controller"
 import { zValidator } from "@hono/zod-validator";
 import { userSchema } from "../validators";
 export const userRouter = new Hono();
@@ -25,3 +25,4 @@ userRouter.get("/search/users", searchUsers)
 
 userRouter.get('/users/order/:id', getUsersByOrderController);
 userRouter.get('/users/:id/addresses', getAddressesByUserController);
+userRouter.get('restaurantOwner/:id/restaurants', getRestaurantsByOwnerController);
