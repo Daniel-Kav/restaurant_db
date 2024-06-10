@@ -390,7 +390,7 @@ export const user = pgTable("users", {
   emailVerified: boolean("email_verified").notNull(),
   confirmationCode: varchar("confirmation_code", { length: 255 }),
   password: varchar("password", { length: 255 }).notNull(),
-  role: roleEnum.notNull().default('user'),  // Enum role column with default value
+  role: roleEnum('role').default('user'),  // Enum role column with default value
   createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { mode: "string" }).notNull().defaultNow(),
 });
