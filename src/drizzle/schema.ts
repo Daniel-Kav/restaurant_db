@@ -378,6 +378,7 @@ export type TSStatusCatalog = typeof statusCatalog.$inferSelect;
 
 
 //user table
+//user table
 export const user = pgTable("users", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),

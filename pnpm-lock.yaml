@@ -17,6 +17,9 @@ importers:
       '@hono/zod-validator':
         specifier: ^0.2.2
         version: 0.2.2(hono@4.4.3)(zod@3.23.8)
+      '@neondatabase/serverless':
+        specifier: ^0.9.3
+        version: 0.9.3
       bcrypt:
         specifier: ^5.1.1
         version: 5.1.1
@@ -25,7 +28,7 @@ importers:
         version: 16.4.5
       drizzle-orm:
         specifier: ^0.31.1
-        version: 0.31.1(@opentelemetry/api@1.8.0)(@types/pg@8.11.6)(pg@8.12.0)
+        version: 0.31.1(@neondatabase/serverless@0.9.3)(@opentelemetry/api@1.8.0)(@types/pg@8.11.6)(pg@8.12.0)
       hono:
         specifier: ^4.4.2
         version: 4.4.3
@@ -493,6 +496,9 @@ packages:
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
+
+  '@neondatabase/serverless@0.9.3':
+    resolution: {integrity: sha512-6ZBK8asl2Z3+ADEaELvbaVVGVlmY1oAzkxxZfpmXPKFuJhbDN+5fU3zYBamsahS/Ch1zE+CVWB3R+8QEI2LMSw==}
 
   '@opentelemetry/api@1.8.0':
     resolution: {integrity: sha512-I/s6F7yKUDdtMsoBWXJe8Qz40Tui5vsuKCWJEWVL+5q9sSWRzzx6v2KeNsOBEwd94j0eWkpWCH4yB6rZg9Mf0w==}
@@ -1215,6 +1221,10 @@ snapshots:
       - encoding
       - supports-color
 
+  '@neondatabase/serverless@0.9.3':
+    dependencies:
+      '@types/pg': 8.11.6
+
   '@opentelemetry/api@1.8.0': {}
 
   '@types/bcrypt@5.0.2':
@@ -1293,8 +1303,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.31.1(@opentelemetry/api@1.8.0)(@types/pg@8.11.6)(pg@8.12.0):
+  drizzle-orm@0.31.1(@neondatabase/serverless@0.9.3)(@opentelemetry/api@1.8.0)(@types/pg@8.11.6)(pg@8.12.0):
     optionalDependencies:
+      '@neondatabase/serverless': 0.9.3
       '@opentelemetry/api': 1.8.0
       '@types/pg': 8.11.6
       pg: 8.12.0
