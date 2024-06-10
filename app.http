@@ -1,7 +1,12 @@
 
-GET http://localhost:8000/login
+GET http://localhost:8000/auth/login
 
 
+###
+POST http://localhost:8000/auth/register
+
+###
+POST http://localhost:8000/auth/login
 ###
 
 GET http://localhost:8000/api/search/categories?searchTerm=salad

@@ -75,7 +75,8 @@ app.route("/", menuItemRouter) //menuItemRouter
 app.route("/", orderMenuItemRouter) //orderMenuItemRouter
 app.route("/", orderStatusRouter) //orderStatusRouter
 app.route("/", restaurantOwnerRouter) //restaurantOwnerRouter
-app.route("auth/", authRouter)
+app.route("/auth", authRouter); // Authentication routes
+
 
 
 

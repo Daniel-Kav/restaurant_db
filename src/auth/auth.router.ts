@@ -6,6 +6,8 @@ import { registerUserSchema, loginUserSchema } from '../validators'
 export const authRouter = new Hono();
 
 
+
+
 authRouter.post('/register', zValidator('json', registerUserSchema, (result, c) => {
     if (!result.success) {
         return c.json(result.error, 400)
