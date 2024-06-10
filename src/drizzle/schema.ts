@@ -1,4 +1,4 @@
-import { pgTable, serial,varchar,numeric,index, text,timestamp ,unique,integer, boolean } from "drizzle-orm/pg-core";
+import { pgTable, serial,varchar,numeric,index, text,timestamp ,unique,integer, boolean, PgEnumColumn, pgEnum } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 
@@ -378,7 +378,9 @@ export type TSStatusCatalog = typeof statusCatalog.$inferSelect;
 
 
 //user table
-//user table
+// Define the role enum
+const roleEnum = pgEnum('role', ['user', 'admin']);
+
 export const user = pgTable("users", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 255 }).notNull(),
@@ -388,6 +390,7 @@ export const user = pgTable("users", {
   emailVerified: boolean("email_verified").notNull(),
   confirmationCode: varchar("confirmation_code", { length: 255 }),
   password: varchar("password", { length: 255 }).notNull(),
+  role: roleEnum.notNull().default('user'),  // Enum role column with default value
   createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { mode: "string" }).notNull().defaultNow(),
 });
