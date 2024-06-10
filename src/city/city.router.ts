@@ -5,7 +5,7 @@ import { createCity, deleteCity, getCity, getRestaurantsByCityController, listCi
 export const cityRouter = new Hono();
 
 //get all address      
-cityRouter.get("/api/cities", listCity);
+cityRouter.get("/cities", listCity);
 //get a single address   
 cityRouter.get("/cities/:id", getCity)
 // create a address 
