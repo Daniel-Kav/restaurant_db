@@ -1,5 +1,17 @@
 import { z } from 'zod';
 
+export const loginUserSchema = z.object({
+    username: z.string(),
+    password: z.string()
+})
+
+export const registerUserSchema = z.object({
+    userId: z.number(),
+    username: z.string(),
+    password: z.string(),
+    role: z.string().optional(),
+})
+
 // Address table schema
 export const addressSchema = z.object({
   id: z.number().optional(), // Auto-incremented
