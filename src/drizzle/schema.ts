@@ -1,4 +1,4 @@
-import { pgTable, serial,varchar,numeric,index, text,timestamp ,unique,integer, boolean, PgEnumColumn, pgEnum } from "drizzle-orm/pg-core";
+import { pgTable, serial,varchar,numeric,index, text,timestamp ,unique,integer, boolean , pgEnum } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 
@@ -379,7 +379,7 @@ export type TSStatusCatalog = typeof statusCatalog.$inferSelect;
 
 //user table
 // Define the role enum
-const roleEnum = pgEnum('role', ['user', 'admin']);
+
 
 export const user = pgTable("users", {
   id: serial("id").primaryKey(),
@@ -390,7 +390,6 @@ export const user = pgTable("users", {
   emailVerified: boolean("email_verified").notNull(),
   confirmationCode: varchar("confirmation_code", { length: 255 }),
   password: varchar("password", { length: 255 }).notNull(),
-  role: roleEnum('role').default('user'),  // Enum role column with default value
   createdAt: timestamp("created_at", { mode: "string" }).notNull().defaultNow(),
   updatedAt: timestamp("updated_at", { mode: "string" }).notNull().defaultNow(),
 });
@@ -403,3 +402,25 @@ export const userRelations = relations(user, ({ many }) => ({
 
 export type TIUser = typeof user.$inferInsert;
 export type TSUser = typeof user.$inferSelect;
+
+
+
+export const roleEnum = pgEnum("role", ["admin", "user"])
+
+export const AuthOnUsersTable = pgTable("auth_on_users", {
+    id: serial("id").primaryKey(),
+    userId: integer("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
+    password: varchar("password", { length: 100 }),
+    username: varchar("username", { length: 100 }),
+    role: roleEnum("role").default("user")
+});
+
+export const AuthOnUsersRelations = relations(AuthOnUsersTable, ({ one }) => ({
+    user: one(user, {
+        fields: [AuthOnUsersTable.userId],
+        references: [user.id]
+    })
+}));
+
+export type TIAuthOnUser = typeof AuthOnUsersTable.$inferInsert;
+export type TSAuthOnUser = typeof AuthOnUsersTable.$inferSelect;
