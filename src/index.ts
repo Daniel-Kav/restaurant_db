@@ -27,7 +27,7 @@ import { restaurantOwnerRouter } from './restaurant_owner/restaurant_owner.route
 
 
 
-const app =  new Hono().basePath('/api')
+const app =  new Hono()
 // rate limiter
 const limiter = rateLimiter({
   windowMs: 1 * 60 * 1000, // 1 minute
