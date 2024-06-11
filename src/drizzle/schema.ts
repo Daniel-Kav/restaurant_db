@@ -405,7 +405,7 @@ export type TSUser = typeof user.$inferSelect;
 
 
 
-export const roleEnum = pgEnum("role", ["admin", "user"])
+export const roleEnum = pgEnum("role", ["admin", "user", "all"]);
 
 export const AuthOnUsersTable = pgTable("auth_on_users", {
     id: serial("id").primaryKey(),

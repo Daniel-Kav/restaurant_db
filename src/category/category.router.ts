@@ -2,11 +2,12 @@ import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { categorySchema } from "../validators";
 import { createCategory, deleteCategory, getCategory, listCategory, searchCategories } from "../category/category.controller";
+import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 // import { adminRoleAuth } from "../middleware/bearAuth";
 export const categoryRouter = new Hono();
 
 //get all address      
-categoryRouter.get("/categories",listCategory);
+categoryRouter.get("/categories", userRoleAuth,adminRoleAuth,listCategory);
 //get a single address   
 categoryRouter.get("/categories/:id", getCategory)
 // create a address 
