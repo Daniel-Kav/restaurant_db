@@ -1,0 +1,1 @@
+ALTER TABLE "auth_on_users" ADD CONSTRAINT "auth_on_users_username_unique" UNIQUE("username");

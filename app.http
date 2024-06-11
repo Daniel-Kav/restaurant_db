@@ -1,19 +1,18 @@
-
+//superuser search cities
 GET http://localhost:8000/search/cities?searchTerm=an
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgxNDU5NDR9.IVzaktovkyl_tts9SmqbU109ncQvzEbKrRsapVAIQ1s
 ###
 
-GET http://localhost:8000/categories 
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTQwMDk4fQ.9QujZKy15TDmnQk2DAuPUi1K1eq6RcQVhYYWa8VzkMg
-
+GET http://localhost:8000/users 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgxNDI3MDl9._mLwO8kB7gvQIYCQLVMEKzSs1xDev9Hp2XCRNoqG46A
 ###
   
 POST  http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "userId": 1,
-    "username": "jane",
+    "userId": 3,
+    "username": "jack",
     "password": "pass",
     "role": "admin"
 }
@@ -22,10 +21,10 @@ POST  http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "userId": 3,
-    "username": "kavatha",
+    "userId": 2,
+    "username": "simon",
     "password": "pass",
-    "role": "all"
+    "role": "superuser"
 }
 ###
 
@@ -33,11 +32,21 @@ POST  http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "username": "jane",
+    "username": "jack",
     "password": "pass"
 }
 ###
-POST http://localhost:8000/auth/login
+POST http://localhost:8000/comments
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgxNDU5NDR9.IVzaktovkyl_tts9SmqbU109ncQvzEbKrRsapVAIQ1s
+Content-Type: application/json
+
+{
+  "orderId": 1,
+  "userId": 1,
+  "commentText": "The delivery was quick and the food was delicious!",
+  "isComplaint": false,
+  "isPraise": true
+}
 ###
 
 GET http://localhost:8000/search/categories?searchTerm=salad
@@ -45,10 +54,44 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6
 
 ###
 
+GET http://localhost:8000/users/order/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYWNrIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTQ4NTE5fQ.ap8pVdMlygb4cXIv5XN0YTckkhErztlgRJKhaHPnUVc
+###
+
+GET http://localhost:8000/orders/user/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYWNrIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTQ4NTE5fQ.ap8pVdMlygb4cXIv5XN0YTckkhErztlgRJKhaHPnUVc
+###
+
 GET http://localhost:8000/search/cities?searchTerm=a
+
 
 ###
 
+GET http://localhost:8000/states/1/cities
+
+###
+###
+
+GET http://localhost:8000/states/4/cities/3/restaurants
+###
+// Service to fetch menu items by restaurant ID
+
+GET http://localhost:8000/restaurants/3/menu_items
+
+###
+// Service to fetch menu items by category ID
+GET http://localhost:8000/categories/6/menu_items
+
+###
+// Service to fetch the owner of a restaurant by restaurant ID
+GET http://localhost:8000/restaurants/3/owner
+
+###
+// fetch all restaurants owned by a particular user
+GET http://localhost:8000/restaurantOwner/1/restaurants
+
+
+###
 GET http://localhost:8000/restaurant/4/category?categoryName=2
 
 ###
@@ -71,19 +114,22 @@ Content-Type: application/json
   "zipCode": "12345",
   "cityId": 1
 }
-
 ###
 
-POST http://localhost:8000/users
+POST http://localhost:8000/orders
 Content-Type: application/json
 
 {
-  contact_phone: "555-123-4567",
-  phone_verified: true,
-  email: "user@example.com",
-  email_verified: true,
-  password: "securepassword123"
+  "restaurantId": 5,
+  "estimatedDeliveryTime": "2024-06-09T19:30:00Z",
+  "deliveryAddressId": 1,
+  "userId": 2,
+  "price": 50.00,
+  "discount": 5.00,
+  "finalPrice": 45.00,
+  "comment": "Please leave the order at the front door if no one answers."
 }
+###
 
 
 ###
@@ -166,7 +212,7 @@ Content-Type: application/json
     "code": "KE"
 }
 ###
-DELETE http://localhost:8000/auth/users
+DELETE http://localhost:8000/users
 
 
 
@@ -174,7 +220,7 @@ DELETE http://localhost:8000/auth/users
 DELETE http://localhost:8000/restaurants/3
 ###
 
-GET http://localhost:8000/api/states/4
+GET http://localhost:8000/states/4
 ###
 
 GET http://localhost:8000/status-catalog

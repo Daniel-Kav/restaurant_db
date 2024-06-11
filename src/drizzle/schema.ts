@@ -405,13 +405,13 @@ export type TSUser = typeof user.$inferSelect;
 
 
 
-export const roleEnum = pgEnum("role", ["admin", "user", "all"]);
+export const roleEnum = pgEnum("role", ["admin", "user", "superuser"]);
 
 export const AuthOnUsersTable = pgTable("auth_on_users", {
     id: serial("id").primaryKey(),
     userId: integer("user_id").notNull().references(() => user.id, { onDelete: "cascade" }),
     password: varchar("password", { length: 100 }),
-    username: varchar("username", { length: 100 }),
+    username: varchar("username", { length: 100 }).unique(),
     role: roleEnum("role").default("user")
 });
 

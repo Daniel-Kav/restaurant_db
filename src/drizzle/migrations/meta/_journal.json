@@ -15,6 +15,20 @@
       "when": 1718126871910,
       "tag": "0001_careful_omega_flight",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1718130754088,
+      "tag": "0002_legal_the_hood",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1718131694041,
+      "tag": "0003_curvy_rhino",
+      "breakpoints": true
     }
   ]
 }
