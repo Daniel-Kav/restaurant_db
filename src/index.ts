@@ -23,7 +23,7 @@ import { menuItemRouter } from './menu_item/menu_item.router'
 import { orderMenuItemRouter } from './order_menu_item/order_menu_item.router'
 import { orderStatusRouter } from './order_status/order_status.router'
 import { restaurantOwnerRouter } from './restaurant_owner/restaurant_owner.router'
-import { authRouter } from './auth/auth.router'
+// import { authRouter } from './auth/auth.router'
 
 
 
@@ -75,7 +75,7 @@ app.route("/", menuItemRouter) //menuItemRouter
 app.route("/", orderMenuItemRouter) //orderMenuItemRouter
 app.route("/", orderStatusRouter) //orderStatusRouter
 app.route("/", restaurantOwnerRouter) //restaurantOwnerRouter
-app.route("/auth", authRouter); // Authentication routes
+// app.route("/auth", authRouter); // Authentication routes
 
 
 
