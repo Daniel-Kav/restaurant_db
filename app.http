@@ -97,7 +97,7 @@ POST http://localhost:8000/comments
 Content-Type: application/json
 
 {
-  "orderId": 123,
+  "orderId": 1,
   "userId": 1,
   "commentText": "The delivery was quick and the food was delicious!",
   "isComplaint": false,
@@ -143,7 +143,7 @@ Content-Type: application/json
     "code": "KE"
 }
 ###
-DELETE http://localhost:8000/address/1
+DELETE http://localhost:8000/auth/users
 
 
 
