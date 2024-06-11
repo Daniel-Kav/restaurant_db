@@ -1,9 +1,9 @@
 
-GET http://localhost:8000/auth/login
+GET http://localhost:8000/search/cities?searchTerm=an
 
 
 ###
-
+  
 POST  http://localhost:8000/auth/register
 Content-Type: application/json
 
