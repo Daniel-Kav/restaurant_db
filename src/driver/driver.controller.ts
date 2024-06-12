@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { createdriverService, deletedriverService, driverService, getdriverService, updatedriverService } from "./driver.service";
+import { createdriverService, deletedriverService, driverService, getDriverByOrderService, getdriverService, updatedriverService } from "./driver.service";
 
 export const listDriver = async (c: Context) => {
     try {
@@ -77,3 +77,18 @@ export const deleteDriver = async (c: Context) => {
         return c.json({ error: error?.message }, 400)
     }
 }
+
+export const getDriverByOrder = async (c: Context) => {
+    const orderId = parseInt(c.req.param('orderId'));
+    if (isNaN(orderId)) return c.text('Invalid order ID', 400);
+
+    try {
+        const driver = await getDriverByOrderService(orderId);
+        if (!driver || driver.length === 0) {
+            return c.text('No driver found for this order', 404);
+        }
+        return c.json(driver, 200);
+    } catch (error: any) {
+        return c.json({ error: error?.message }, 500);
+    }
+};

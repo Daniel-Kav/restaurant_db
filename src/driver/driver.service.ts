@@ -1,7 +1,7 @@
 
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
-import { TIDriver, TSDriver, driver } from "../drizzle/schema";
+import { TIDriver, TSDriver, driver, order } from "../drizzle/schema";
 
 export const driverService = async (limit?: number): Promise<TSDriver[] | null>  => {
     if (limit) {
@@ -32,3 +32,14 @@ export const deletedriverService = async (id: number) => {
     await db.delete(driver).where(eq(driver.id, id))
     return "driver deleted successfully";
 }
+
+export const getDriverByOrderService = async (orderId: number) => {
+  const driverInfo = await db
+    .select()
+    .from(driver)
+    .innerJoin(order, eq(order.driverId, driver.id))
+    .where(eq(order.id, orderId))
+    .execute();
+
+  return driverInfo;
+};

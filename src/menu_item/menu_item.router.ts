@@ -19,6 +19,6 @@ menuItemRouter.put("/menuItem/:id", updatemenuItem)
 
 menuItemRouter.delete("/menuItem/:id", deletemenuItem)
 menuItemRouter.get('/restaurants/:id/menu_items', getMenuItemsByRestaurantController);
-menuItemRouter.get('/categories/:id/menu_items', getMenuItemsByCategoryController);
+menuItemRouter.get('menuItem/categories/:id/menu_items', getMenuItemsByCategoryController);
 
 menuItemRouter.get('/restaurant/:restaurantId/category', getRestaurantMenuByCategoryNameController);

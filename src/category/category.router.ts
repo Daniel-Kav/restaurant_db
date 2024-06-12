@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { categorySchema } from "../validators";
 import { createCategory, deleteCategory, getCategory, listCategory, searchCategories } from "../category/category.controller";
-import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
+import { adminRoleAuth, superuserRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 // import { adminRoleAuth } from "../middleware/bearAuth";
 export const categoryRouter = new Hono();
 
@@ -19,4 +19,4 @@ categoryRouter.post("/categories",  zValidator('json', categorySchema, (result, 
 //update aaddresscityRouterr.put("categories/:id", updateCity)
 categoryRouter.delete("/categories/:id", deleteCategory)
 
-categoryRouter.get("/search/categories", searchCategories)
+categoryRouter.get("/search/categories",superuserRoleAuth , searchCategories)

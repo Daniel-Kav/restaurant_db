@@ -1,6 +1,6 @@
 import { eq , or ,ilike} from "drizzle-orm";
 import db from "../drizzle/db";
-import { TICategory, TSAddress, TSCategory, category } from "../drizzle/schema";
+import { TICategory, TSAddress, TSCategory, category, menuItem } from "../drizzle/schema";
 
 export const categoryService = async (limit?: number): Promise<TSCategory[] | any> => {
     if (limit) {
@@ -42,3 +42,12 @@ export const searchCategoriesService = async (searchTerm: string): Promise<TSCat
   
   return categories;
 };
+
+
+// New service to get menu items for a particular category
+// export const getMenuItemsByCategoryService = async (categoryId: number): Promise<TSMenuItem[] | null> => {
+//     const menuItems = await db.query.menuItem.findMany({
+//         where: eq(menuItem.id, categoryId)
+//     });
+//     return menuItems;
+// };

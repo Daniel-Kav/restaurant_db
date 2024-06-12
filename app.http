@@ -1,10 +1,11 @@
 //superuser search cities
 GET https://kavatha-api.azurewebsites.net/search/cities?searchTerm=an
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgxNDU5NDR9.IVzaktovkyl_tts9SmqbU109ncQvzEbKrRsapVAIQ1s
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 ###
 
-GET https://kavatha-api.azurewebsites.net/users 
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgxNDI3MDl9._mLwO8kB7gvQIYCQLVMEKzSs1xDev9Hp2XCRNoqG46A
+GET https://kavatha-api.azurewebsites.net/search/users?searchTerm=ja
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
+
 ###
   
 POST  https://kavatha-api.azurewebsites.net/auth/register
@@ -37,7 +38,7 @@ Content-Type: application/json
 }
 ###
 POST https://kavatha-api.azurewebsites.net/comments
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgxNDU5NDR9.IVzaktovkyl_tts9SmqbU109ncQvzEbKrRsapVAIQ1s
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
@@ -47,57 +48,62 @@ Content-Type: application/json
   "isComplaint": false,
   "isPraise": true
 }
+
+###
 ###
 
 GET https://kavatha-api.azurewebsites.net/search/categories?searchTerm=salad
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MDQ1OTAwfQ.vlF6GsxB_4ovlqOWH72KkwJj0KK4fs41A89kTPYSE64 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
 ###
 
 GET https://kavatha-api.azurewebsites.net/users/order/3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYWNrIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTQ4NTE5fQ.ap8pVdMlygb4cXIv5XN0YTckkhErztlgRJKhaHPnUVc
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 ###
 
 GET https://kavatha-api.azurewebsites.net/orders/user/3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYWNrIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTQ4NTE5fQ.ap8pVdMlygb4cXIv5XN0YTckkhErztlgRJKhaHPnUVc
-###
-
-GET https://kavatha-api.azurewebsites.net/search/cities?searchTerm=a
-
-
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 ###
 
 GET https://kavatha-api.azurewebsites.net/states/1/cities
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
-###
 ###
 
 GET https://kavatha-api.azurewebsites.net/states/4/cities/3/restaurants
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
+
 ###
 // Service to fetch menu items by restaurant ID
 
 GET https://kavatha-api.azurewebsites.net/restaurants/3/menu_items
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
+
 
 ###
 // Service to fetch menu items by category ID
-GET https://kavatha-api.azurewebsites.net/categories/6/menu_items
+GET https://kavatha-api.azurewebsites.net/categories/1/menu_items
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
+
 
 ###
 // Service to fetch the owner of a restaurant by restaurant ID
 GET https://kavatha-api.azurewebsites.net/restaurants/3/owner
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
 ###
 // fetch all restaurants owned by a particular user
 GET https://kavatha-api.azurewebsites.net/restaurantOwner/1/restaurants
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
 
 ###
-GET https://kavatha-api.azurewebsites.net/restaurant/4/category?categoryName=2
+GET https://kavatha-api.azurewebsites.net/menuItem/categories/:id/menu_items
 
 ###
 
 GET https://kavatha-api.azurewebsites.net/categories
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MDQ1OTAwfQ.vlF6GsxB_4ovlqOWH72KkwJj0KK4fs41A89kTPYSE64
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
 ###
 
@@ -106,6 +112,7 @@ GET https://kavatha-api.azurewebsites.net/search/users?searchTerm=ja
 ###
 
 POST https://kavatha-api.azurewebsites.net/restaurants
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
@@ -117,6 +124,7 @@ Content-Type: application/json
 ###
 
 POST https://kavatha-api.azurewebsites.net/orders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
@@ -130,11 +138,10 @@ Content-Type: application/json
   "comment": "Please leave the order at the front door if no one answers."
 }
 ###
-
-
 ###
 
 POST https://kavatha-api.azurewebsites.net/address
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
@@ -148,6 +155,7 @@ Content-Type: application/json
 ###
 
 POST https://kavatha-api.azurewebsites.net/orders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
@@ -163,10 +171,11 @@ Content-Type: application/json
 
 ###
 POST http://localhost:8000/comments
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
-  "orderId": 1,
+  "orderId": "2",
   "userId": 1,
   "commentText": "The delivery was quick and the food was delicious!",
   "isComplaint": false,
@@ -174,8 +183,25 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:8000/drivers
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
+Content-Type: application/json
+
+{
+  "id": 4,
+  "carMake": "Nissan",
+  "carModel": "Altima",
+  "carYear": 2019,
+  "userId": 3,
+  "online": false,
+  "delivering": true,
+  "createdAt": "2024-06-12T12:00:00Z",
+  "updatedAt": "2024-06-12T12:00:00Z"
+}
+###
 
 PUT http://localhost:8000/states/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
@@ -186,16 +212,18 @@ Content-Type: application/json
 ###
 
 PUT http://localhost:8000/users/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
-    "name": "newUser"
+    "name": "Kavatha"
 }
 
 
 ###
 
-PUT http://localhost:8000/comments/
+PUT http://localhost:8000/restaurants/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
@@ -205,6 +233,7 @@ Content-Type: application/json
 ###
 
 PUT http://localhost:8000/states/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
@@ -212,35 +241,18 @@ Content-Type: application/json
     "code": "KE"
 }
 ###
-DELETE http://localhost:8000/users
-
-
-
-###
-DELETE http://localhost:8000/restaurants/3
-###
-
-GET http://localhost:8000/states/4
-###
-
-GET http://localhost:8000/status-catalog
-
-###
-
-GET http://localhost:8000/users/order/3
+GET http://localhost:8000/order/1/driver
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
 
 ###
-
-GET http://localhost:8000/orders/user/3
-###
-
-GET http://localhost:8000/cities/4/restaurants
+DELETE http://localhost:8000/restaurants/7
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
 ###
 
-GET http://localhost:8000/states/1/cities
-
+GET http://localhost:8000/statusCatalog
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
 ###
 // Service to fetch the status of a particular order by order ID
@@ -266,7 +278,9 @@ GET http://localhost:8000/api/restaurants/21/owner
 // fetch all restaurants owned by a particular user
 GET http://localhost:8000/restaurantOwner/1/restaurants
 
-
+###
+GET http://localhost:8000/users/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 ###
 
 POST  http://localhost:8000/auth/login
