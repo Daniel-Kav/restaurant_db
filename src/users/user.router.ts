@@ -15,9 +15,9 @@ userRouter.post("/users", zValidator('json', userSchema, (result, c) => {
     if (!result.success) {
         return c.json(result.error, 400)
     }
-}),superuserRoleAuth,createUser)
+}), adminOrUserRoleAuth ,createUser)
 //update a user
-userRouter.put("/users/:id", superuserRoleAuth, updateUser)
+userRouter.put("/users/:id", adminOrUserRoleAuth, updateUser)
 
 userRouter.delete("/users/:id",adminRoleAuth , deleteUser)
 // search
@@ -27,4 +27,4 @@ userRouter.get("/search/users",adminRoleAuth, searchUsers)
 
 userRouter.get('/users/order/:id', adminRoleAuth,getUsersByOrderController);
 userRouter.get('/users/:id/addresses',adminRoleAuth, getAddressesByUserController);
-userRouter.get('restaurantOwner/:id/restaurants', adminRoleAuth ,getRestaurantsByOwnerController);
+userRouter.get('restaurantOwner/:id/restaurants', adminOrUserRoleAuth ,getRestaurantsByOwnerController);
