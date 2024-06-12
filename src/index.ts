@@ -79,7 +79,10 @@ app.route("/auth",  authRouter); // Authentication routes
 
 
 
-
+// Default route for unmatched paths
+app.all('*', (c) => {
+  return c.json({ error: 'Route not found' }, 404)
+})
 
 serve({
   fetch: app.fetch,

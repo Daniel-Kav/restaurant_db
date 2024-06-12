@@ -96,7 +96,7 @@ export const getCitiesByStateController = async (c: Context) => {
   } catch (error) {
     console.error('Error fetching cities for state:', error);
     return c.json({ error: 'Internal server error' }, 500);
-  }
+  }   
 };
 
 // Controller to fetch restaurants by city ID

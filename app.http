@@ -1,13 +1,13 @@
 //superuser search cities
-GET http://localhost:8000/search/cities?searchTerm=an
+GET https://kavatha-api.azurewebsites.net/search/cities?searchTerm=an
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgxNDU5NDR9.IVzaktovkyl_tts9SmqbU109ncQvzEbKrRsapVAIQ1s
 ###
 
-GET http://localhost:8000/users 
+GET https://kavatha-api.azurewebsites.net/users 
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgxNDI3MDl9._mLwO8kB7gvQIYCQLVMEKzSs1xDev9Hp2XCRNoqG46A
 ###
   
-POST  http://localhost:8000/auth/register
+POST  https://kavatha-api.azurewebsites.net/auth/register
 Content-Type: application/json
 
 {
@@ -17,7 +17,7 @@ Content-Type: application/json
     "role": "admin"
 }
 ###
-POST  http://localhost:8000/auth/register
+POST  https://kavatha-api.azurewebsites.net/auth/register
 Content-Type: application/json
 
 {
@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 ###
 
-POST  http://localhost:8000/auth/login
+POST  https://kavatha-api.azurewebsites.net/auth/login
 Content-Type: application/json
 
 {
@@ -36,7 +36,7 @@ Content-Type: application/json
     "password": "pass"
 }
 ###
-POST http://localhost:8000/comments
+POST https://kavatha-api.azurewebsites.net/comments
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgxNDU5NDR9.IVzaktovkyl_tts9SmqbU109ncQvzEbKrRsapVAIQ1s
 Content-Type: application/json
 
@@ -49,63 +49,63 @@ Content-Type: application/json
 }
 ###
 
-GET http://localhost:8000/search/categories?searchTerm=salad
+GET https://kavatha-api.azurewebsites.net/search/categories?searchTerm=salad
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MDQ1OTAwfQ.vlF6GsxB_4ovlqOWH72KkwJj0KK4fs41A89kTPYSE64 
 
 ###
 
-GET http://localhost:8000/users/order/3
+GET https://kavatha-api.azurewebsites.net/users/order/3
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYWNrIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTQ4NTE5fQ.ap8pVdMlygb4cXIv5XN0YTckkhErztlgRJKhaHPnUVc
 ###
 
-GET http://localhost:8000/orders/user/3
+GET https://kavatha-api.azurewebsites.net/orders/user/3
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYWNrIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTQ4NTE5fQ.ap8pVdMlygb4cXIv5XN0YTckkhErztlgRJKhaHPnUVc
 ###
 
-GET http://localhost:8000/search/cities?searchTerm=a
+GET https://kavatha-api.azurewebsites.net/search/cities?searchTerm=a
 
 
 ###
 
-GET http://localhost:8000/states/1/cities
+GET https://kavatha-api.azurewebsites.net/states/1/cities
 
 ###
 ###
 
-GET http://localhost:8000/states/4/cities/3/restaurants
+GET https://kavatha-api.azurewebsites.net/states/4/cities/3/restaurants
 ###
 // Service to fetch menu items by restaurant ID
 
-GET http://localhost:8000/restaurants/3/menu_items
+GET https://kavatha-api.azurewebsites.net/restaurants/3/menu_items
 
 ###
 // Service to fetch menu items by category ID
-GET http://localhost:8000/categories/6/menu_items
+GET https://kavatha-api.azurewebsites.net/categories/6/menu_items
 
 ###
 // Service to fetch the owner of a restaurant by restaurant ID
-GET http://localhost:8000/restaurants/3/owner
+GET https://kavatha-api.azurewebsites.net/restaurants/3/owner
 
 ###
 // fetch all restaurants owned by a particular user
-GET http://localhost:8000/restaurantOwner/1/restaurants
+GET https://kavatha-api.azurewebsites.net/restaurantOwner/1/restaurants
 
 
 ###
-GET http://localhost:8000/restaurant/4/category?categoryName=2
+GET https://kavatha-api.azurewebsites.net/restaurant/4/category?categoryName=2
 
 ###
 
-GET http://localhost:8000/categories
+GET https://kavatha-api.azurewebsites.net/categories
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MDQ1OTAwfQ.vlF6GsxB_4ovlqOWH72KkwJj0KK4fs41A89kTPYSE64
 
 ###
 
-GET http://localhost:8000/search/users?searchTerm=ja
+GET https://kavatha-api.azurewebsites.net/search/users?searchTerm=ja
 
 ###
 
-POST http://localhost:8000/restaurants
+POST https://kavatha-api.azurewebsites.net/restaurants
 Content-Type: application/json
 
 {
@@ -116,7 +116,7 @@ Content-Type: application/json
 }
 ###
 
-POST http://localhost:8000/orders
+POST https://kavatha-api.azurewebsites.net/orders
 Content-Type: application/json
 
 {
@@ -134,7 +134,7 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:8000/address
+POST https://kavatha-api.azurewebsites.net/address
 Content-Type: application/json
 
 {
@@ -147,7 +147,7 @@ Content-Type: application/json
 }
 ###
 
-POST http://localhost:8000/orders
+POST https://kavatha-api.azurewebsites.net/orders
 Content-Type: application/json
 
 {
