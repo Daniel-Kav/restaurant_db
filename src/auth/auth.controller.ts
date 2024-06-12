@@ -35,7 +35,7 @@ export const loginUser = async (c: Context) => {
             const payload = {
                 sub: userExist?.username,
                 role: userExist?.role,
-                exp: Math.floor(Date.now() / 1000) + (60 * 180)  // 3 hour  => SESSION EXPIRATION
+                exp: Math.floor(Date.now() / 1000) + (60 * 1800)  // 3 hour  => SESSION EXPIRATION
             }
             let secret = process.env.JWT_SECRET as string;  // secret key
             const token = await sign(payload, secret);   // create a JWT token
