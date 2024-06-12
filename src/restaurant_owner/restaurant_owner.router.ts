@@ -2,13 +2,13 @@ import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { restaurantOwnerSchema } from "../validators";
 import { createrestaurantOwner, deleterestaurantOwner, getRestaurantOwnerController, getrestaurantOwner, listrestaurantOwner, updaterestaurantOwner } from "./restaurant_owner.controller";
-import { adminRoleAuth, superuserRoleAuth } from "../middleware/bearAuth";
+import { adminOrUserRoleAuth, adminRoleAuth, superuserRoleAuth } from "../middleware/bearAuth";
 export const restaurantOwnerRouter = new Hono();
 
 //get all address      
-restaurantOwnerRouter.get("/restaurantOwner",superuserRoleAuth, listrestaurantOwner);
+restaurantOwnerRouter.get("/restaurantOwner",adminOrUserRoleAuth, listrestaurantOwner);
 //get a single address   
-restaurantOwnerRouter.get("/restaurantOwner/:id",superuserRoleAuth, getrestaurantOwner)
+restaurantOwnerRouter.get("/restaurantOwner/:id",adminOrUserRoleAuth, getrestaurantOwner)
 // create a address 
 restaurantOwnerRouter.post("/restaurantOwner", zValidator('json', restaurantOwnerSchema, (result, c) => {
     if (!result.success) {
