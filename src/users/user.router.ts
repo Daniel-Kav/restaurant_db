@@ -2,14 +2,14 @@ import { Hono } from "hono";
 import { listUsers, getUser, createUser, updateUser, deleteUser, searchUsers, getUsersByOrderController, getAddressesByUserController, getRestaurantsByOwnerController } from "./user.controller"
 import { zValidator } from "@hono/zod-validator";
 import { userSchema } from "../validators";
-import { adminRoleAuth, superuserRoleAuth, userRoleAuth } from "../middleware/bearAuth";
+import { adminOrUserRoleAuth, adminRoleAuth, superuserRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 // import { adminRoleAuth } from "../middleware/bearAuth";
 export const userRouter = new Hono();
 
 //get all users      
-userRouter.get("/users", adminRoleAuth || userRoleAuth, listUsers);
+userRouter.get("/users", adminOrUserRoleAuth, listUsers);
 //get a single user   
-userRouter.get("/users/:id",superuserRoleAuth, getUser)
+userRouter.get("/users/:id",adminOrUserRoleAuth , getUser)
 // create a user 
 userRouter.post("/users", zValidator('json', userSchema, (result, c) => {
     if (!result.success) {

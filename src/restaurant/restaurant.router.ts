@@ -2,13 +2,13 @@
 import { createRestaurant, deleteRestaurant, getRestaurants, listRestaurants, updateRestaurant } from "./restaurant.controller";
 import { restaurantSchema } from "../validators";
 import { zValidator } from "@hono/zod-validator";
-import { adminRoleAuth, superuserRoleAuth, userRoleAuth } from "../middleware/bearAuth";
+import { adminOrUserRoleAuth, adminRoleAuth, superuserRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 
 export const restaurantRouter = new Hono();
 
-restaurantRouter.get("/restaurants", superuserRoleAuth, listRestaurants);
+restaurantRouter.get("/restaurants", adminOrUserRoleAuth , listRestaurants);
 //get a one restuarant    api/users/1
-restaurantRouter.get("/restaurants/:id", userRoleAuth,getRestaurants);
+restaurantRouter.get("/restaurants/:id", adminOrUserRoleAuth,getRestaurants);
 // create a restaurant 
 restaurantRouter.post("/restaurants", zValidator('json', restaurantSchema, (result, c) => {
     if (!result.success) {

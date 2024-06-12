@@ -1,8 +1,8 @@
 import { Hono } from "hono";
 import { zValidator } from "@hono/zod-validator";
 import { commentSchema } from "../validators";
-import { createComment, deleteComment, getComment, listComment } from "./comments.controller";
-import { adminRoleAuth, superuserRoleAuth } from "../middleware/bearAuth";
+import { createComment, deleteComment, getComment, listComment, updateComment } from "./comments.controller";
+import { adminOrUserRoleAuth, adminRoleAuth, superuserRoleAuth } from "../middleware/bearAuth";
 export const commentsRouter = new Hono();
 
 //get all address      
@@ -16,5 +16,6 @@ commentsRouter.post("/comments",   zValidator('json', commentSchema, (result, c)
     }
 }),superuserRoleAuth, createComment)
 //update aaddresscityRouterr.put("categories/:id", updateCity)
+commentsRouter.put("/comments/:id", adminOrUserRoleAuth, updateComment)
 
 commentsRouter.delete("/comments/:id", adminRoleAuth, deleteComment)
