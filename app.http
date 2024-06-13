@@ -248,7 +248,7 @@ GET http://localhost:8000/order/1/driver
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
 ###
-GET http://localhost:8000/order/discounted/1
+GET http://localhost:8000/orders/discounted/
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
 

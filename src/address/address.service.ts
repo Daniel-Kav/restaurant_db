@@ -20,17 +20,17 @@ export const getAdresService = async (id: number): Promise<TIAddress[] | any > =
 
 export const createAdresService = async (User: TIAddress) => {
     await db.insert(address).values(User)
-    return "Adres created successfully";
+    return "Adress created successfully";
 }
 
 export const updateAdresService = async (id: number, userData: TIAddress) => {
     await db.update(address).set(userData).where(eq(address.id, id))
-    return "Adres updated successfully";
+    return "Adress updated successfully";
 }
 
 export const deleteAdresService = async (id: number) => {
     await db.delete(address).where(eq(address.id, id))
-    return "Adres deleted successfully";
+    return "Adress deleted successfully";
 }
 // search 
 export const client = new Client({

@@ -16,7 +16,7 @@ cityRouter.post("/cities",  zValidator('json', citySchema, (result, c) => {
     }
 }), adminRoleAuth , createCity)
 //update aaddresscityRouterr.put("categories/:id", updateCity)
-
+cityRouter.put("cities/:id", adminRoleAuth , updateCity)
 cityRouter.delete("/cities/:id", adminRoleAuth ,deleteCity)
 cityRouter.get('/cities/:id/restaurants', adminOrUserRoleAuth , getRestaurantsByCityController);
 cityRouter.get('/search/cities',adminOrUserRoleAuth , searchCitiesController);
