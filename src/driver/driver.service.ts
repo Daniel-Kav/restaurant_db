@@ -12,7 +12,7 @@ export const driverService = async (limit?: number): Promise<TSDriver[] | null> 
     return await db.query.driver.findMany();
 }
 
-export const getdriverService = async (id: number) : Promise<TIDriver[] | any> => {
+export const getdriverService = async (id: number) : Promise<TIDriver[] | unknown > => {
     return await db.query.driver.findFirst({
         where: eq(driver.id, id)
     })

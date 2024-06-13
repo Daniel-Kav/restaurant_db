@@ -12,7 +12,7 @@ export const adresService = async (limit?: number): Promise<TSAddress[] | null >
     return await db.query.address.findMany();
 }
 
-export const getAdresService = async (id: number): Promise<TIAddress[] | any > => {
+export const getAdresService = async (id: number): Promise<TIAddress[] | unknown  > => {
     return await db.query.address.findFirst({
         where: eq(address.id, id)
     })
@@ -28,7 +28,7 @@ export const updateAdresService = async (id: number, userData: TIAddress) => {
     return "Adress updated successfully";
 }
 
-export const deleteAdresService = async (id: number) => {
+export const deleteAdresService = async (id: number):Promise <string | null> => {
     await db.delete(address).where(eq(address.id, id))
     return "Adress deleted successfully";
 }
@@ -37,7 +37,7 @@ export const client = new Client({
     connectionString: process.env.Database_URL as string,   //get the database url from the environment
 })
 client.connect();
-export const searchAddresService = async (searchTerm: string) => {
+export const searchAddresService = async (searchTerm: string) : Promise< TSAddress[] | null > => {
     const query = `
         SELECT * FROM address
         WHERE street_address_1 ILIKE $1 

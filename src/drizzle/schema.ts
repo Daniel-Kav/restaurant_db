@@ -230,7 +230,7 @@ export const orderRelations = relations(order, ({ one, many }) => ({
 }));
 
 // Order Types
-export type TIOrder = typeof order.$inferInsert;
+export type TIOrder = typeof order.$inferInsert ;
 export type TSOrder = typeof order.$inferSelect;
 
 

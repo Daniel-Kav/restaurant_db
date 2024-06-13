@@ -11,7 +11,7 @@ export const categoryService = async (limit?: number): Promise<TSCategory[] | an
     return await db.query.category.findMany();
 }
 
-export const getcategoryService = async (id: number): Promise<TICategory[] | any> => {
+export const getcategoryService = async (id: number): Promise<TICategory[] | unknown > => {
     return await db.query.category.findFirst({
         where: eq(category.id, id)
     })

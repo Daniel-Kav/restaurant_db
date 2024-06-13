@@ -17,7 +17,7 @@ export const limitrestaurantsService = async (limit?: number): Promise<TSRestaur
 }
 
 
-export const getRestaurantService = async (id: number): Promise<TIRestaurant[] | any> => {
+export const getRestaurantService = async (id: number): Promise<TIRestaurant[] | unknown > => {
     return await db.query.restaurant.findFirst({
         where: eq(restaurant.id, id)
     })

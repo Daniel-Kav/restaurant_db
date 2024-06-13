@@ -12,7 +12,7 @@ export const commentService = async (limit?: number): Promise<TSComment[] | null
     return await db.query.comment.findMany();
 }
 
-export const getcommentService = async (id: number):Promise<TIComment[] | any> => {
+export const getcommentService = async (id: number):Promise<TIComment[] | unknown > => {
     return await db.query.comment.findFirst({
         where: eq(comment.id, id)
     })

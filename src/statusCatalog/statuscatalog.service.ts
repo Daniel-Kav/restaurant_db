@@ -13,7 +13,7 @@ export const statusCatalogService = async (limit?: number): Promise<TSStatusCata
     return await db.query.statusCatalog.findMany();
 }
 
-export const getstatusCatalogService = async (id: number): Promise<TSStatusCatalog[] | any > => {
+export const getstatusCatalogService = async (id: number): Promise<TSStatusCatalog[] | unknown  > => {
     return await db.query.statusCatalog.findFirst({
         where: eq(statusCatalog.id, id)
     })

@@ -13,7 +13,7 @@ export const stateService = async (limit?: number): Promise<TSState[] | null> =>
     return await db.query.state.findMany();
 }
 
-export const getstateService = async (id: number): Promise<TIState[] | any> => {
+export const getstateService = async (id: number): Promise<TIState[] | unknown > => {
     return await db.query.state.findFirst({
         where: eq(state.id, id)
     })

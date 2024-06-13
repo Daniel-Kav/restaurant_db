@@ -37,7 +37,12 @@ export const deleterestaurantOwnerService = async (id: number) => {
 // Service to fetch the owner of a restaurant by restaurant ID
 export const getRestaurantOwnerService = async (restaurantId: number) => {
   const ownerData = await db
-    .select()
+    .select({
+      ownerId: restaurantOwner.ownerId,
+      restaurantId: restaurantOwner.restaurantId,
+      ownerName: user.name,
+      ownerEmail: user.email,
+    })
     .from(restaurantOwner)
     .innerJoin(user, eq(restaurantOwner.ownerId, user.id))
     .where(eq(restaurantOwner.restaurantId, restaurantId))

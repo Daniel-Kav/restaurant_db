@@ -13,7 +13,7 @@ export const orderService = async (limit?: number): Promise<TSOrder[] | null> =>
     return await db.query.order.findMany();
 }
 
-export const getorderService = async (id: number): Promise<TIOrder[] | any> => {
+export const getorderService = async (id: number): Promise<TIOrder[] | unknown > => {
     return await db.query.order.findFirst({
         where: eq(order.id, id)
     })

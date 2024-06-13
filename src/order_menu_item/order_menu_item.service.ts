@@ -13,7 +13,7 @@ export const orderMenuItemService = async (limit?: number): Promise<TSOrderMenuI
     return await db.query.orderMenuItem.findMany();
 }
 
-export const getorderMenuItemService = async (id: number): Promise<TIOrderMenuItem[] | any>  => {
+export const getorderMenuItemService = async (id: number): Promise<TIOrderMenuItem[] | unknown >  => {
     return await db.query.orderMenuItem.findFirst({
         where: eq(orderMenuItem.id, id)
     })

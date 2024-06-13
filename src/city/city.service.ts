@@ -13,7 +13,7 @@ export const cityService = async (limit?: number): Promise<TSCity[] | null> => {
     return await db.query.city.findMany();
 }
 
-export const getcityService = async (id: number) : Promise<TICity[] | any>=> {
+export const getcityService = async (id: number) : Promise<TICity[] | unknown  >=> {
     return await db.query.city.findFirst({
         where: eq(city.id, id)
     })
