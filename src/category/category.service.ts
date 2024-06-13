@@ -17,12 +17,12 @@ export const getcategoryService = async (id: number): Promise<TICategory[] | unk
     })
 }
 
-export const createcategoryService = async (User: TICategory) => {
+export const createcategoryService = async (User: TICategory): Promise< string >  => {
     await db.insert(category).values(User)
     return "category created successfully";
 }
 
-export const updatecategoryService = async (id: number, userData: TICategory) => {
+export const updatecategoryService = async (id: number, userData: TICategory): Promise<string> => {
     await db.update(category).set(userData).where(eq(category.id, id))
     return "category updated successfully";
 }

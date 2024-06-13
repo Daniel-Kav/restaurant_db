@@ -18,12 +18,12 @@ export const getAdresService = async (id: number): Promise<TIAddress[] | unknown
     })
 }
 
-export const createAdresService = async (User: TIAddress) => {
+export const createAdresService = async (User: TIAddress): Promise< string > => {
     await db.insert(address).values(User)
     return "Adress created successfully";
 }
 
-export const updateAdresService = async (id: number, userData: TIAddress) => {
+export const updateAdresService = async (id: number, userData: TIAddress) :Promise < string >=> {
     await db.update(address).set(userData).where(eq(address.id, id))
     return "Adress updated successfully";
 }

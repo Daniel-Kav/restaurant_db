@@ -19,24 +19,24 @@ export const getorderService = async (id: number): Promise<TIOrder[] | unknown >
     })
 }
 
-export const createorderService = async (User: TIOrder) => {
+export const createorderService = async (User: TIOrder): Promise< string > => {
     await db.insert(order).values(User)
     return "order created successfully";
 }
 
-export const updateorderyService = async (id: number, userData: TIOrder) => {
+export const updateorderyService = async (id: number, userData: TIOrder) :Promise<string> => {
     await db.update(order).set(userData).where(eq(order.id, id))
     return "order updated successfully";
 }
 
-export const deleteorderService = async (id: number) => {
+export const deleteorderService = async (id: number) : Promise <string> => {
     await db.delete(order).where(eq(order.id, id))
     return "order deleted successfully";
 }
 
 
 // Service to fetch orders by user ID
-export const getOrdersByUserService = async (userId: number) => {
+export const getOrdersByUserService = async (userId: number):Promise <TSOrder[] > => {
   const orders = await db
     .select()
     .from(order)
@@ -46,7 +46,7 @@ export const getOrdersByUserService = async (userId: number) => {
   return orders;
 };
 
-export const getDiscountedOrdersService = async () => {
+export const getDiscountedOrdersService = async () : Promise <TSOrder[] | null >=> {
   const discountedOrders = await db
     .select()
     .from(order)
