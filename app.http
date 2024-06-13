@@ -188,7 +188,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xl
 Content-Type: application/json
 
 {
-  "id": 4,
+  "id": 1,
   "carMake": "Nissan",
   "carModel": "Altima",
   "carYear": 2019,
@@ -199,14 +199,17 @@ Content-Type: application/json
   "updatedAt": "2024-06-12T12:00:00Z"
 }
 ###
+DELETE http://localhost:8000/drivers/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
+###
 PUT http://localhost:8000/states/4
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
-    "name": "Uganda",
-    "code":"UG"
+    "name": "Tanzania",
+    "code":"TZ"
 }
 
 ###
@@ -232,16 +235,20 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:8000/states/2
+PUT http://localhost:8000/menuItem/2
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 Content-Type: application/json
 
 {
-    "name": "kenya",
-    "code": "KE"
+    "name": "rice",
+    "active": true
 }
 ###
 GET http://localhost:8000/order/1/driver
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
+
+###
+GET http://localhost:8000/order/discounted/1
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
 

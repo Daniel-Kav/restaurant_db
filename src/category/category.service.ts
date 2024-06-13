@@ -44,10 +44,3 @@ export const searchCategoriesService = async (searchTerm: string): Promise<TSCat
 };
 
 
-// New service to get menu items for a particular category
-// export const getMenuItemsByCategoryService = async (categoryId: number): Promise<TSMenuItem[] | null> => {
-//     const menuItems = await db.query.menuItem.findMany({
-//         where: eq(menuItem.id, categoryId)
-//     });
-//     return menuItems;
-// };

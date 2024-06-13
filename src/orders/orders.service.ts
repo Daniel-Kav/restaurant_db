@@ -1,6 +1,6 @@
 
 
-import { eq } from "drizzle-orm";
+import { eq , sql} from "drizzle-orm";
 import db from "../drizzle/db";
 import {TIOrder, TSOrder, order } from "../drizzle/schema";
 
@@ -46,4 +46,11 @@ export const getOrdersByUserService = async (userId: number) => {
   return orders;
 };
 
-
+export const getDiscountedOrdersService = async () => {
+  const discountedOrders = await db
+    .select()
+    .from(order)
+    .where(sql`${order.discount} > 0`)
+    .execute();
+  return discountedOrders;
+};

@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { createorderService, deleteorderService, getOrdersByUserService, getorderService, orderService, updateorderyService } from "./orders.service";
+import { createorderService, deleteorderService, getDiscountedOrdersService, getOrdersByUserService, getorderService, orderService, updateorderyService } from "./orders.service";
 
 export const listOrder = async (c: Context) => {
     try {
@@ -96,5 +96,14 @@ export const getOrdersByUserController = async (c: Context) => {
   } catch (error) {
     console.error('Error fetching orders for user:', error);
     return c.json({ error: 'Internal server error fetching order' }, 500);
+  }
+};
+
+export const getDiscountedOrdersController = async (c: Context) => {
+  try {
+    const discountedOrders = await getDiscountedOrdersService();
+    return c.json(discountedOrders);
+  } catch (error) {
+    return c.json({ error: 'Failed to retrieve discounted orders' }, 500);
   }
 };
