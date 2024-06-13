@@ -35,7 +35,7 @@ export const deletecityService = async (id: number):Promise<string | null > => {
 }
 
 // Service to search for a city by name using a search term
-export const searchCitiesService = async (searchTerm: string): Promise< TSCity[]  > => {
+export const searchCitiesService = async (searchTerm: string): Promise< TSCity[] | string > => {
   const cities = await db.select()
     .from(city)
     .where(ilike(city.name, `%${searchTerm}%`));

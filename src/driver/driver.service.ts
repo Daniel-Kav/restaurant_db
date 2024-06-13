@@ -1,8 +1,12 @@
 
 import { eq } from "drizzle-orm";
 import db from "../drizzle/db";
-import { TIDriver, TSDriver, driver, order } from "../drizzle/schema";
+import { TIDriver, TSDriver, driver, order,TSOrder } from "../drizzle/schema";
 
+interface DriverOrderInfo {
+    driver: TSDriver;
+    orders: TSOrder[];
+}
 export const driverService = async (limit?: number): Promise<TSDriver[] | null>  => {
     if (limit) {
         return await db.query.driver.findMany({
@@ -18,17 +22,17 @@ export const getdriverService = async (id: number) : Promise<TIDriver[] | unknow
     })
 }
 
-export const createdriverService = async (User: TIDriver) => {
+export const createdriverService = async (User: TIDriver):Promise<string> => {
     await db.insert(driver).values(User)
     return "driver created successfully";
 }
 
-export const updatedriverService = async (id: number, driverData: TIDriver) => {
+export const updatedriverService = async (id: number, driverData: TIDriver): Promise<string> => {
     await db.update(driver).set(driverData).where(eq(driver.id, id))
     return "driver updated successfully";
 }
 
-export const deletedriverService = async (id: number) => {
+export const deletedriverService = async (id: number): Promise<string> => {
     await db.delete(driver).where(eq(driver.id, id))
     return "driver deleted successfully";
 }
@@ -41,5 +45,5 @@ export const getDriverByOrderService = async (orderId: number) => {
     .where(eq(order.id, orderId))
     .execute();
 
-  return driverInfo;
+  return driverInfo || null;
 };
