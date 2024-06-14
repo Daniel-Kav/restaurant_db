@@ -7,7 +7,7 @@ export const createAuthUserService = async (user: TIAuthOnUser): Promise<string 
     return "User created successfully";
 }
 
-export const userLoginService = async (user: TSAuthOnUser) : Promise<TSAuthOnUser | unknown > => {
+export const userLoginService = async (user: TSAuthOnUser) => {
     const { username, password } = user;
     return await db.query.AuthOnUsersTable.findFirst({
         columns: {
