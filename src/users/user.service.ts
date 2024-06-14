@@ -103,7 +103,7 @@ export const getUsersByOrderService = async (orderId: number) => {
     cityId: number;
  }
 // Service to fetch addresses by user ID
-export const getAddressesByUserService = async (userId: number):Promise<TuserAddresses[] | null> => {
+export const getAddressesByUserService = async (userId: number):Promise<TuserAddresses[] > => {
   const addresses = await db
     .select()
     .from(address)

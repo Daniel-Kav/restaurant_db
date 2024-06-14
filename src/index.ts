@@ -180,6 +180,7 @@ app.get('/', (c) => {
         <footer>
             <p>API Documentation &copy; 2024</p>
             <p>Server is running on port: ${process.env.PORT}</p>
+            <p>Designed by Daniel Kavatha</p>
         </footer>
     </div>
 </body>
