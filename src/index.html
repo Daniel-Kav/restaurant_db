@@ -142,3 +142,170 @@
 </body>
 
 </html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My API Documentation</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .btn-custom {
+            background-color: #1da1f2;
+            color: white;
+            border: none;
+        }
+
+        .btn-custom:hover {
+            background-color: #0d8dd7;
+        }
+
+        .sidebar {
+            background-color: #f8f9fa;
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            width: 250px;
+        }
+
+        .content {
+            margin-left: 270px;
+        }
+
+        .header {
+            border-bottom: 1px solid #e1e8ed;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h4>Documentation</h4>
+        <input type="text" class="form-control mb-3" placeholder="Search the docs">
+        <nav class="nav flex-column">
+            <a class="nav-link" href="#">Getting started</a>
+            <a class="nav-link" href="#">Fundamentals</a>
+            <a class="nav-link" href="#">Tools and libraries</a>
+            <a class="nav-link" href="#">Tutorials</a>
+            <a class="nav-link" href="#">API reference index</a>
+        </nav>
+    </div>
+
+    <div class="container content">
+        <div class="header">
+            <h1>My API</h1>
+            <p>The My API enables programmatic access to My API in unique and advanced ways. Tap into core elements
+                like: Users, Restaurants, Orders, and more.</p>
+            <button class="btn btn-custom">Subscribe to Pro access</button>
+            <button class="btn btn-custom">API access levels and versions</button>
+            <button class="btn btn-custom">Try a live request</button>
+        </div>
+
+        <div class="section-title">
+            <h2>API Details</h2>
+        </div>
+
+        <pre>
+import { serve } from '@hono/node-server'
+import { Hono } from 'hono'
+import "dotenv/config"
+import { logger } from 'hono/logger'
+import { csrf } from 'hono/csrf'
+import { trimTrailingSlash } from 'hono/trailing-slash'
+import { HTTPException } from 'hono/http-exception'
+import { rateLimiter } from "hono-rate-limiter";
+import { jwt } from 'hono/jwt';
+
+import { userRouter } from './users/user.router'
+import { restaurantRouter } from './restaurant/restaurant.router'
+import { statusCatalogRouter } from './statusCatalog/statuscatalog.router'
+import { orderRouter } from './orders/orders.router'
+import { stateRouter } from './state/state.router'
+import { AddressRouter } from './address/address.router'
+import { cityRouter } from './city/city.router'
+import { categoryRouter } from './category/category.router'
+import { commentsRouter } from './comments/comments.router'
+import { driversRouter } from './driver/driver.router'
+import { menuItemRouter } from './menu_item/menu_item.router'
+import { orderMenuItemRouter } from './order_menu_item/order_menu_item.router'
+import { orderStatusRouter } from './order_status/order_status.router'
+import { restaurantOwnerRouter } from './restaurant_owner/restaurant_owner.router'
+import { authRouter } from './auth/auth.router'
+
+const app =  new Hono()
+
+// rate limiter
+const limiter = rateLimiter({
+  windowMs: 1 * 60 * 1000, // 1 minute
+  limit: 10, // Limit each IP to 100 requests per `window`
+  standardHeaders: "draft-6", // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+  keyGenerator: (c) => "<unique_key>", // Method to generate custom identifiers for clients.
+});
+
+
+// inbuilt middlewares
+app.use(logger())  //logs request and response to the console
+app.use(csrf()) //prevents CSRF attacks by checking request headers.
+app.use(trimTrailingSlash()) //removes trailing slashes from the request URL
+//3rd party middlewares
+
+app.use(limiter);// Apply the rate limiting middleware to all requests.
+
+// JWT Middleware for authentication
+app.use('/api/*', jwt({
+  secret: process.env.JWT_SECRET as string,
+}));
+
+// default route
+app.get('/success', (c) => {
+  return c.text('The server is working !!')
+})
+
+// my custom  routes
+app.route("/", userRouter)   // /users
+app.route("/", categoryRouter) // /cities
+app.route("/", restaurantRouter) //restaurants
+app.route("/", statusCatalogRouter) //catalogs
+app.route("/", orderRouter) //orders
+app.route("/", cityRouter) //categories
+app.route("/", stateRouter) //states
+app.route("/", AddressRouter) //address
+app.route("/", commentsRouter) //comments
+app.route("/", driversRouter) //drivers
+app.route("/", menuItemRouter) //menuItemRouter
+app.route("/", orderMenuItemRouter) //orderMenuItemRouter
+app.route("/", orderStatusRouter) //orderStatusRouter
+app.route("/", restaurantOwnerRouter) //restaurantOwnerRouter
+app.route("/auth",  authRouter); // Authentication routes
+
+// Default route for unmatched paths
+app.all('*', (c) => {
+  return c.text('you are not where you are supposed to be !!!')
+})
+
+serve({
+  fetch: app.fetch,
+  port: Number(process.env.PORT)
+})
+console.log(`Server is running on port ${process.env.PORT}`)
+        </pre>
+    </div>
+</body>
+
+</html>

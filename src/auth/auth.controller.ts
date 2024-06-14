@@ -3,6 +3,9 @@ import { Context } from "hono";
 import { createAuthUserService, userLoginService } from "./auth.service";
 import bycrpt from "bcrypt";
 import { sign } from "hono/jwt";
+import nodemailer from 'nodemailer';
+import ejs from 'ejs';
+import path from 'path';
 
 
 export const registerUser = async (c: Context) => {
