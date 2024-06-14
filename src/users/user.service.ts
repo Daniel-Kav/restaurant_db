@@ -91,9 +91,19 @@ export const getUsersByOrderService = async (orderId: number) => {
 //     where: sql`${order.id} = ${orderId}`
 //   });
 // };
-
+ export type TuserAddresses = {
+  id: number;
+    createdAt: string;
+    updatedAt: string;
+    streetAddress1: string;
+    streetAddress2: string | null;
+    zipCode: string;
+    deliveryInstructions: string | null;
+    userId: number;
+    cityId: number;
+ }
 // Service to fetch addresses by user ID
-export const getAddressesByUserService = async (userId: number) => {
+export const getAddressesByUserService = async (userId: number):Promise<TuserAddresses[] | null> => {
   const addresses = await db
     .select()
     .from(address)
@@ -119,9 +129,15 @@ export const getAddressesByUserService = async (userId: number) => {
 //     }
 //   });
 // };
+export type TresOwner = {
+    restaurantId: number;
+    restaurantName: string;
+    restaurantStreetAddress: string;
+    restaurantZipCode: string;
 
+}
 // Service to fetch all restaurants owned by a particular user
-export const getRestaurantsByOwnerService = async (userId: number) => {
+export const getRestaurantsByOwnerService = async (userId: number): Promise<TresOwner[] | null>  => {
   const restaurants = await db
     .select({
       restaurantId: restaurant.id,

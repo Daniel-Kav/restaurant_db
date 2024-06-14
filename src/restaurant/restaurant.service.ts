@@ -38,6 +38,41 @@ export const deleteRestaurantService = async (id: number) => {
     return "restaurant deleted successfully";
 }
 
+export const getRestaurantMenuByCategoryId = async (restaurantId: number ) => {
+    return await db.query.restaurant.findFirst({
+      where: eq(restaurant.id, restaurantId),
+      with: {
+        orders: {
+            with:{
+                restaurant:{
+                    with:{
+                        city: true,
+                         menuItems: {
+                            columns:{
+                                active: true,
+                                name: true,
+                                price: true,
+                                ingredients: true
+                            }
+                         }
+                    },
+                    columns: {
+                        name: true,
+
+                    },
+                },
+                address: {
+                    columns: {
+                        streetAddress1: true,
+                        zipCode: true,
+                        
+                    }
+                },
+            }
+        },
+      },
+    });
+  }
 
 
 

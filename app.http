@@ -1,5 +1,5 @@
 //superuser search cities
-GET https://kavatha-api.azurewebsites.net/search/cities?searchTerm=an
+GET https://localhost:8000/search/cities?searchTerm=an
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 ###
 
@@ -28,12 +28,17 @@ Content-Type: application/json
     "role": "superuser"
 }
 ###
-
+//user tokens
+//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOZWxseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MzkyNjc2fQ.jiyN42QOuaI8KWZPxq-Pfdyd6ab1cnXR-Ix2WIigt3Y
+//superadmins
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgzOTI3MTZ9.u-E2Jm63o1j6exlA8b2FIVml9ojLW5iB7UcY7cJjUoo
+# admintoken
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYWNrIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MzkyNzgwfQ.Qu1tY90CFMr_5EiDajdCfgDgw5UZphjNWwQxNPUPwlc
 POST  https://kavatha-api.azurewebsites.net/auth/login
 Content-Type: application/json
 
 {
-    "username": "daniel",
+    "username": "jack",
     "password": "pass"
 }
 ###
@@ -250,14 +255,10 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xl
 GET http://localhost:8000/search/address?searchTerm=oak
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
 
-###
-GET http://localhost:8000/orders/discounted
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
-
 
 ###
 DELETE http://localhost:8000/restaurants/7
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOZWxseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MzkyNjc2fQ.jiyN42QOuaI8KWZPxq-Pfdyd6ab1cnXR-Ix2WIigt3Y
 
 ###
 
@@ -282,7 +283,7 @@ GET http://localhost:8000/categories/6/menu_items
 
 ###
 // Service to fetch the owner of a restaurant by restaurant ID
-GET http://localhost:8000/api/restaurants/21/owner
+GET http://localhost:8000/
 
 ###
 // fetch all restaurants owned by a particular user
