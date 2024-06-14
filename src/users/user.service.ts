@@ -137,7 +137,7 @@ export type TresOwner = {
 
 }
 // Service to fetch all restaurants owned by a particular user
-export const getRestaurantsByOwnerService = async (userId: number): Promise<TresOwner[] | null>  => {
+export const getRestaurantsByOwnerService = async (userId: number): Promise<TresOwner[] >  => {
   const restaurants = await db
     .select({
       restaurantId: restaurant.id,
