@@ -15,13 +15,8 @@ export const registerUser = async (c: Context) => {
         const createdUser = await createAuthUserService(user);
         if (!createdUser) return c.text("User not created", 404);
 
-        try {
-            // Send welcome email
-            await sendWelcomeEmail(user.email, user.username);
-            return c.text(" email sent")
-        } catch ( error ){
-            return c.text("Error sending welcome email");
-        }
+        // Send welcome email
+        await sendWelcomeEmail(user.email, user.username);
         return c.json({ msg: createdUser }, 201);
 
     } catch (error: any) {
