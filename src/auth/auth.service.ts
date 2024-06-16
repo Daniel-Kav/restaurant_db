@@ -1,4 +1,4 @@
-import { AuthOnUsersTable, TIAuthOnUser, TSAuthOnUser } from "../drizzle/schema";
+import { AuthOnUsersTable, TIAuthOnUser, TSAuthOnUser, user } from "../drizzle/schema";
 import db from "../drizzle/db";
 import { sql } from "drizzle-orm";
 
@@ -27,3 +27,19 @@ export const userLoginService = async (user: TSAuthOnUser)  => {
         }
     })
 }
+
+
+export const getEmailByUserId = async (id: number): Promise<string | null> => {
+  const result = await db.query.user.findFirst({
+    columns: {
+      email: true,
+    },
+    where: (usr, { eq }) => eq(usr.id, id),
+  });
+
+  if (!result) {
+    return null;
+  }
+
+  return result.email;
+};

@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "userId": 8,
-    "username": "danty",
+    "username": "",
     "password": "pass",
     "role": "admin"
 }
@@ -35,6 +35,15 @@ Content-Type: application/json
 # admintoken
 # eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYWNrIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MzkyNzgwfQ.Qu1tY90CFMr_5EiDajdCfgDgw5UZphjNWwQxNPUPwlc
 POST  https://kavatha.azurewebsites.net/auth/login
+Content-Type: application/json
+
+{
+    "username": "simon",
+    "password": "pass"
+}
+###
+
+POST  https://localhost:8000/auth/login
 Content-Type: application/json
 
 {
