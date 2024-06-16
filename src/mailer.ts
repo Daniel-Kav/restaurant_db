@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
+import { readFile } from 'fs/promises';
+
 
 // Load environment variables from .env file
 dotenv.config();
@@ -34,6 +36,15 @@ export const sendWelcomeEmail = async (to: string, username: string) => {
     </body>
     </html>
   `;
+//default routes
+
+    // try {
+    //     let html = await readFile('./index.html', 'utf-8');
+    //     return
+    // } catch (err:any) {
+    //     return
+    // }
+
 
   // Define mail options
   const mailOptions = {
