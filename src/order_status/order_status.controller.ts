@@ -89,7 +89,7 @@ export const getOrderStatusController = async (c: Context) => {
 
     const orderStatus = await getOrderStatusService(orderId);
 
-    if (!orderStatus.length) {
+    if (!orderStatus) {
       return c.json({ error: 'Order status not found' }, 404);
     }
 

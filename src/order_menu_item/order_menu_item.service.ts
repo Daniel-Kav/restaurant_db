@@ -19,17 +19,17 @@ export const getorderMenuItemService = async (id: number): Promise<TIOrderMenuIt
     })
 }
 
-export const createorderMenuItemService = async (User: TIOrderMenuItem) => {
+export const createorderMenuItemService = async (User: TIOrderMenuItem): Promise<string> => {
     await db.insert(orderMenuItem).values(User)
     return "orderMenuItem created successfully";
 }
 
-export const updateorderMenuItemService = async (id: number, userData: TIOrderMenuItem) => {
+export const updateorderMenuItemService = async (id: number, userData: TIOrderMenuItem): Promise<string> => {
     await db.update(orderMenuItem).set(userData).where(eq(orderMenuItem.id, id))
     return "orderMenuItem updated successfully";
 }
 
-export const deleteorderMenuItemService = async (id: number) => {
+export const deleteorderMenuItemService = async (id: number): Promise<string> => {
     await db.delete(orderMenuItem).where(eq(orderMenuItem.id, id))
     return "orderMenuItem deleted successfully";
 }
