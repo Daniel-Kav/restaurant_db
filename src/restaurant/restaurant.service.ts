@@ -23,17 +23,17 @@ export const getRestaurantService = async (id: number): Promise<TIRestaurant[] |
     })
 }
 
-export const createRestaurantService = async (Restaurant: TIRestaurant) => {
+export const createRestaurantService = async (Restaurant: TIRestaurant): Promise< string > => {
     await db.insert(restaurant).values(Restaurant)
     return "restaurant created successfully";
 }
 
-export const updateRestaurantService = async (id: number, userData: TIRestaurant) => {
+export const updateRestaurantService = async (id: number, userData: TIRestaurant): Promise< string > => {
     await db.update(restaurant).set(userData).where(eq(restaurant.id, id))
     return "restaurant updated successfully";
 }
 
-export const deleteRestaurantService = async (id: number) => {
+export const deleteRestaurantService = async (id: number): Promise< string > => {
     await db.delete(restaurant).where(eq(restaurant.id, id))
     return "restaurant deleted successfully";
 }
