@@ -58,7 +58,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8000/restaurants/3/owner
+GET http://localhost:8000/states/2/cities/1/restaurants
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTg2NTk0MzR9.b-3QABGzyjtjM6HyH9Mj1ag2wMnDqSObEl8y4b60lOo
 ###
 
