@@ -18,17 +18,17 @@ export const getmenuItemService = async (id: number): Promise<TIMenuItem[] | unk
     })
 }
 
-export const createmenuItemService = async (User: TIMenuItem) => {
+export const createmenuItemService = async (User: TIMenuItem): Promise<string> => {
     await db.insert(menuItem).values(User)
     return "menuItem created successfully";
 }
 
-export const updatemenuItemService = async (id: number, userData: TIMenuItem) => {
+export const updatemenuItemService = async (id: number, userData: TIMenuItem) :Promise<string>=> {
     await db.update(menuItem).set(userData).where(eq(menuItem.id, id))
     return "menuItem updated successfully";
 }
 
-export const deletemenuItemService = async (id: number) => {
+export const deletemenuItemService = async (id: number): Promise<string> => {
     await db.delete(menuItem).where(eq(menuItem.id, id))
     return "menuItem deleted successfully";
 }

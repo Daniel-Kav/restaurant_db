@@ -39,7 +39,9 @@ export const deletedriverService = async (id: number): Promise<string> => {
 
 export const getDriverByOrderService = async (orderId: number) => {
   const driverInfo = await db
-    .select()
+    .select(
+        
+    )
     .from(driver)
     .innerJoin(order, eq(order.driverId, driver.id))
     .where(eq(order.id, orderId))
