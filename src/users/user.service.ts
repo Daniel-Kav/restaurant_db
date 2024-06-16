@@ -23,30 +23,21 @@ export const getUserService = async (id: number): Promise<TIUser[] | unknown > =
     })
 }
 
-export const createUserService = async (User: TIUser) => {
+export const createUserService = async (User: TIUser): Promise < string >  => {
     await db.insert(user).values(User)
     return "User created successfully";
 }
 
-export const updateUserService = async (id: number, userData: TIUser) => {
+export const updateUserService = async (id: number, userData: TIUser): Promise < string >  => {
     await db.update(user).set(userData).where(eq(user.id, id))
     return "User updated successfully";
 }
 
-export const deleteUserService = async (id: number) => {
+export const deleteUserService = async (id: number) : Promise < string > => {
     await db.delete(user).where(eq(user.id, id))
     return "User deleted successfully";
 }
 
-// export const searchUsersService = async (searchTerm: string) => {
-//     const query = `
-//         SELECT * FROM users
-//         WHERE name ILIKE $1 OR email ILIKE $1
-//     `;
-//     const values = [`%${searchTerm}%`];
-//     const results = await client.query(query, values);
-//     return results.rows;
-// };
 
 export const searchUsersService = async (searchTerm: string): Promise<TSUser[] | null> => {
   const users = await db.select()
@@ -73,6 +64,7 @@ export const getUsersByOrderService = async (orderId: number) => {
   return users;
 };
 
+
 // export const getUsersByOrderService = async (orderId: number) => {
 //   return await db.query.user.findMany({
 //     columns: {
@@ -91,46 +83,28 @@ export const getUsersByOrderService = async (orderId: number) => {
 //     where: sql`${order.id} = ${orderId}`
 //   });
 // };
- export type TuserAddresses = {
-  id: number;
-    createdAt: string;
-    updatedAt: string;
-    streetAddress1: string;
-    streetAddress2: string | null;
-    zipCode: string;
-    deliveryInstructions: string | null;
-    userId: number;
-    cityId: number;
- }
-// Service to fetch addresses by user ID
-export const getAddressesByUserService = async (userId: number):Promise<TuserAddresses[] > => {
-  const addresses = await db
-    .select()
+// Define a type for the filtered address data
+export type TuserAddresses = {
+  streetAddress1: string;
+  zipCode: string;
+  deliveryInstructions: string | null;
+};
+
+// Service function to fetch addresses by user ID
+export const getAddressesByUserService = async (userId: number): Promise<TuserAddresses[]> => {
+  return await db
+    .select({
+      streetAddress1: address.streetAddress1,
+      zipCode: address.zipCode,
+      deliveryInstructions: address.deliveryInstructions,
+    })
     .from(address)
     .where(eq(address.userId, userId))
     .execute();
-
-  return addresses;
 };
 
-// export const getAddressesByUserService = async (userId: number) => {
-//   return await db.query.address.findMany({
-//     columns: {
-//       id: true,
-//       streetAddress1: true,
-//       streetAddress2: true,
-//       zipCode: true,
-//       deliveryInstructions: true,
-//       createdAt: true,
-//       updatedAt: true,
-//     },
-//     where: {
-//       userId: userId
-//     }
-//   });
-// };
+
 export type TresOwner = {
-    restaurantId: number;
     restaurantName: string;
     restaurantStreetAddress: string;
     restaurantZipCode: string;
@@ -140,7 +114,6 @@ export type TresOwner = {
 export const getRestaurantsByOwnerService = async (userId: number): Promise<TresOwner[] >  => {
   const restaurants = await db
     .select({
-      restaurantId: restaurant.id,
       restaurantName: restaurant.name,
       restaurantStreetAddress: restaurant.streetAddress,
       restaurantZipCode: restaurant.zipCode

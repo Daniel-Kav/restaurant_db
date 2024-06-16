@@ -19,17 +19,17 @@ export const getstatusCatalogService = async (id: number): Promise<TSStatusCatal
     })
 }
 
-export const createstatusCatalogService = async (User: TSStatusCatalog) => {
+export const createstatusCatalogService = async (User: TSStatusCatalog): Promise < string > => {
     await db.insert(statusCatalog).values(User)
     return "statusCatalog created successfully";
 }
 
-export const updatestatusCatalogService = async (id: number, userData: TSStatusCatalog) => {
+export const updatestatusCatalogService = async (id: number, userData: TSStatusCatalog): Promise < string >  => {
     await db.update(statusCatalog).set(userData).where(eq(statusCatalog.id, id))
     return "statusCatalog updated successfully";
 }
 
-export const deletestatusCatalogService = async (id: number) => {
+export const deletestatusCatalogService = async (id: number): Promise < string >  => {
     await db.delete(statusCatalog).where(eq(statusCatalog.id, id))
     return "statusCatalog deleted successfully";
 }
