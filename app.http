@@ -58,7 +58,7 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8000/orderStatus/1/status
+GET http://localhost:8000/restaurants/3/owner
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTg2NTk0MzR9.b-3QABGzyjtjM6HyH9Mj1ag2wMnDqSObEl8y4b60lOo
 ###
 
