@@ -33,10 +33,45 @@ export const deletemenuItemService = async (id: number): Promise<string> => {
     return "menuItem deleted successfully";
 }
 
+// export type TMenuItem = {
+//     id: number;
+//     name: string;
+//     createdAt: string;
+//     updatedAt: string;
+//     restaurantId: number;
+//     categoryId: number;
+//     description: string;
+//     ingredients: string;
+//     price: string;
+// };
+
+// // Service to fetch menu items by restaurant ID
+// export const getMenuItemsByRestaurantService = async (restaurantId: number): Promise< TMenuItem[] > => {
+//   const menuItems = await db
+//     .select()
+//     .from(menuItem)
+//     .where(eq(menuItem.restaurantId, restaurantId))
+//     .execute();
+
+//   return menuItems;
+// };
+
+export type TMenuItem = {
+    name: string;
+    description: string;
+    ingredients: string;
+    price: string;
+};
+
 // Service to fetch menu items by restaurant ID
-export const getMenuItemsByRestaurantService = async (restaurantId: number) => {
-  const menuItems = await db
-    .select()
+export const getMenuItemsByRestaurantService = async (restaurantId: number): Promise<TMenuItem[]> => {
+  const menuItems: TMenuItem[] = await db
+    .select({
+      name: menuItem.name,
+      description: menuItem.description,
+      ingredients: menuItem.ingredients,
+      price: menuItem.price,
+    })
     .from(menuItem)
     .where(eq(menuItem.restaurantId, restaurantId))
     .execute();

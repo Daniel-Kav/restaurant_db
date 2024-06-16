@@ -28,13 +28,7 @@ Content-Type: application/json
     "role": "superuser"
 }
 ###
-//user tokens
-//eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJOZWxseSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4MzkyNjc2fQ.jiyN42QOuaI8KWZPxq-Pfdyd6ab1cnXR-Ix2WIigt3Y
-//superadmins
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTgzOTI3MTZ9.u-E2Jm63o1j6exlA8b2FIVml9ojLW5iB7UcY7cJjUoo
-# admintoken
-# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYWNrIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MzkyNzgwfQ.Qu1tY90CFMr_5EiDajdCfgDgw5UZphjNWwQxNPUPwlc
-POST  https://kavatha.azurewebsites.net/auth/login
+POST  http://localhost:8000.net/auth/login
 Content-Type: application/json
 
 {
@@ -43,7 +37,7 @@ Content-Type: application/json
 }
 ###
 
-POST  https://localhost:8000/auth/login
+POST  http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
@@ -64,56 +58,8 @@ Content-Type: application/json
 }
 
 ###
-###
-
-GET https://kavatha-api.azurewebsites.net/search/categories?searchTerm=salad
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
-
-###
-
-GET https://kavatha-api.azurewebsites.net/users/order/3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
-###
-
-GET https://kavatha-api.azurewebsites.net/orders/user/3
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
-###
-
-GET https://kavatha-api.azurewebsites.net/states/1/cities
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
-
-###
-
-GET https://kavatha-api.azurewebsites.net/states/4/cities/3/restaurants
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
-
-###
-// Service to fetch menu items by restaurant ID
-
-GET https://kavatha-api.azurewebsites.net/restaurants/3/menu_items
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
-
-
-###
-// Service to fetch menu items by category ID
-GET https://kavatha-api.azurewebsites.net/categories/1/menu_items
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
-
-
-###
-// Service to fetch the owner of a restaurant by restaurant ID
-GET https://kavatha-api.azurewebsites.net/restaurants/3/owner
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
-
-###
-// fetch all restaurants owned by a particular user
-GET https://kavatha-api.azurewebsites.net/restaurantOwner/1/restaurants
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYW5pZWwiLCJyb2xlIjoic3VwZXJ1c2VyIiwiZXhwIjoxNzE4Mjg5NDIxfQ.-ZxapEPjww2pSQcFnYHxOdrycW_B-D2tVnndNI2whS0
-
-
-###
-GET https://kavatha-api.azurewebsites.net/menuItem/categories/:id/menu_items
-
+GET http://localhost:8000/restaurants/1/menu_items
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJzaW1vbiIsInJvbGUiOiJzdXBlcnVzZXIiLCJleHAiOjE3MTg2NTk0MzR9.b-3QABGzyjtjM6HyH9Mj1ag2wMnDqSObEl8y4b60lOo
 ###
 
 GET https://kavatha-api.azurewebsites.net/categories
