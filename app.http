@@ -13,7 +13,7 @@ Content-Type: application/json
 
 {
     "userId": 8,
-    "username": "daniel",
+    "username": "dany2",
     "password": "pass",
     "role": "admin"
 }
