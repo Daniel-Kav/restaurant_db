@@ -261,7 +261,7 @@ export const sendWelcomeEmail = async (to: string, username: string) => {
                                   </td>
                                   <td width="50%" class="service-item">
                                       <img width="60px"
-                                          src="https://colorlib.com/etc/email-template/1/images/bg_6.jpg" />
+                                          src="https://colorlib.com/etc/email-template/1/images/003-recipe-book.png" />
                                       <h3>Original Recipes</h3>
                                       <p>Far far away, behind the word mountains, far from the countries</p>
                                   </td>
@@ -269,7 +269,7 @@ export const sendWelcomeEmail = async (to: string, username: string) => {
                               <tr>
                                   <td width="50%" class="service-item">
                                       <img width="60px"
-                                          src="https://colorlib.com/etc/email-template/1/images/blog-1.jpg" />
+                                          src="https://colorlib.com/etc/email-template/1/images/001-diet.png" />
                                       <h3>Diverse Menu</h3>
                                       <p>Discover a variety of dishes that cater to all tastes and preferences.</p>
                                   </td>
