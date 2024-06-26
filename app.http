@@ -13,12 +13,12 @@ Content-Type: application/json
 
 {
     "userId": 8,
-    "username": "Kevin",
+    "username": "DAN",
     "password": "pass",
     "role": "admin"
 }
 ###
-POST  https://kavatha-api.azurewebsites.net/users
+POST  https://kavatha-api.azurewebsites.net/auth/register
 Content-Type: application/json
 
 {
